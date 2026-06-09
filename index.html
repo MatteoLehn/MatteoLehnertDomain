@@ -1,0 +1,432 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <title>Matteo – Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;600&family=Space+Mono:wght@400;700&display=swap');
+
+    :root { --bg: #0015e8; --text: #f0f0f0; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { overflow-y: scroll; height: 100%; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Lora', serif, 'Space Grotesk', sans-serif;
+      height: 100%;
+      cursor: crosshair;
+    }
+
+    /* Lora helper class per your template */
+    .lora-main {
+      font-family: "Lora", serif;
+      font-optical-sizing: auto;
+      font-weight: 400;
+      font-style: normal;
+    }
+
+    /* Better sans for footer */
+    .footer-sans {
+      font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+      font-weight: 500;
+      font-style: normal;
+    }
+    a { color: var(--text); text-decoration: underline; text-underline-offset: 3px; }
+    a:hover { opacity: 0.6; }
+
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 40px;
+      z-index: 100;
+      opacity: 0;
+      transition: opacity 0.5s ease;
+      pointer-events: none;
+    }
+    nav.visible { opacity: 1; pointer-events: all; }
+    .nav-name { font-family: 'Space Mono', monospace; font-size: 12px; letter-spacing: 0.15em; text-transform: uppercase; opacity: 0.6; }
+    .nav-links { display: flex; gap: 28px; font-size: 12px; font-family: 'Space Mono', monospace; letter-spacing: 0.08em; text-transform: uppercase; }
+    .nav-links a { text-decoration: none; opacity: 0.6; transition: opacity 0.2s; }
+    .nav-links a:hover { opacity: 1; }
+
+    .page {
+      /* let sections size to their content to avoid huge empty blue gaps */
+      min-height: auto;
+      padding: 80px 40px 40px;
+      position: relative;
+      border-top: none; /* removed section separators */
+      will-change: transform;
+      transition: transform 0.25s ease;
+      display: grid;
+      grid-template-rows: auto 1fr;
+      gap: 24px;
+    }
+
+    #hero {
+      border-top: none;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      align-items: flex-end;
+      padding: 56px 40px;
+      /* ensure homepage shows only the blue hero area initially */
+      min-height: 100vh;
+    }
+    .hero-name {
+      font-family: 'Space Mono', monospace;
+      font-size: clamp(52px, 10vw, 130px);
+      font-weight: 700;
+      line-height: 0.88;
+      letter-spacing: -0.03em;
+      text-transform: uppercase;
+      text-align: right;
+    }
+
+    .status-dot {
+      display: inline-block; width: 7px; height: 7px;
+      border-radius: 50%; background: #4dff91; margin-right: 6px;
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
+
+    .section-header {
+      display: flex; justify-content: space-between; align-items: baseline;
+      padding-bottom: 8px;
+      position: relative;
+    }
+    /* removed section underline separators per request */
+    h2 { font-family: 'Lora', serif; font-size: 14px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; opacity: 0.9; }
+    .section-num { font-family: 'Lora', serif; font-size: 13px; font-weight: 700; opacity: 0.9; letter-spacing: 0.06em; }
+
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 32px 48px; align-content: start; }
+
+    .item-title { font-size: 16px; font-weight: 600; margin-bottom: 4px; }
+    .item-desc { font-size: 13px; opacity: 0.8; line-height: 1.6; }
+
+    /* Photo */
+    .about-photo {
+      width: 100%;
+      max-width: 280px;
+      aspect-ratio: 3/4;
+      object-fit: cover;
+      object-position: top center;
+      display: block;
+      filter: grayscale(15%) contrast(1.05);
+      border-radius: 8px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.45);
+    }
+
+    .stack-list { display: flex; flex-wrap: wrap; gap: 8px; align-content: flex-start; }
+    .tag {
+      background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
+      padding: 6px 14px;
+      font-size: 12px; font-family: 'Space Mono', monospace; letter-spacing: 0.05em;
+      border-radius: 999px;
+      color: var(--text);
+      opacity: 0.95;
+      transition: transform 0.16s ease, box-shadow 0.16s ease;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.25) inset;
+      cursor: default;
+    }
+    .tag:hover { transform: translateY(-2px); box-shadow: 0 6px 18px rgba(0,0,0,0.45) inset; }
+
+    /* timeline: vertical glow and dots centered on it */
+    .timeline { position: relative; padding-left: 44px; }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 16px; /* glow x-position */
+      top: 8px;
+      bottom: 8px;
+      width: 4px;
+      border-radius: 3px;
+      background: linear-gradient(to bottom, rgba(255,255,255,0.14), rgba(255,255,255,0.04));
+      box-shadow: 0 8px 22px rgba(0,0,0,0.18), 0 0 16px rgba(255,255,255,0.02) inset;
+      filter: blur(0.8px);
+      opacity: 0.95;
+    }
+    .tl-item { position: relative; margin-bottom: 26px; }
+    .tl-item::before {
+      content: '';
+      position: absolute;
+      left: -34px; /* negative so dot overlaps the glow at left:16px */
+      top: px;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--text);
+      border: 2px solid rgba(255,255,255,0.08);
+      box-shadow: 0 8px 22px rgba(0,0,0,0.45);
+    }
+    .tl-date { font-family: 'Space Mono', monospace; font-size: 11px; opacity: 0.4; margin-bottom: 4px; }
+    .tl-title { font-size: 15px; font-weight: 600; }
+    .tl-sub { font-size: 13px; opacity: 0.6; margin-top: 2px; }
+
+    .footer-bar {
+      position: fixed; bottom: 0; left: 0; right: 0;
+      display: flex; justify-content: center; gap: 10px;
+      padding: 12px 40px; font-family: 'Space Mono', monospace;
+      font-size: 11px; letter-spacing: 0.08em;
+      pointer-events: none; z-index: 100;
+      opacity: 0; transition: opacity 0.5s ease;
+    }
+    .footer-bar.visible { opacity: 0.35; }
+
+  @media (max-width: 374px) {
+  .page { padding: 60px 16px 32px; gap: 16px; }
+  #hero { padding: 40px 16px; justify-content: center; align-items: center; }
+  nav { padding: 12px 16px; }
+  .hero-name { font-size: 32px; text-align: center; }
+  .footer-bar { padding: 10px 16px; font-size: 9px; }
+  .section-header { padding-bottom: 6px; }
+  h2 { font-size: 10px; }
+  .item-title { font-size: 15px; }
+  .item-desc { font-size: 12px; }
+  .tag { font-size: 11px; padding: 3px 10px; }
+  .stack-list { gap: 6px; }
+  .about-photo { max-width: 100%; margin: 0 auto; }
+  .timeline { padding-left: 36px; }
+  .timeline::before { left: 14px; width: 3px; }
+  .tl-item::before { left: -22px; width: 10px; height: 10px; }
+}
+
+/* iPhone 15 & kleine Phones (375px - 480px) */
+@media (min-width: 375px) and (max-width: 480px) {
+  .page { padding: 70px 18px 34px; gap: 18px; }
+  #hero { padding: 50px 18px; justify-content: center; align-items: center; }
+  nav { padding: 14px 18px; }
+  .hero-name { font-size: 40px; text-align: center; }
+  .nav-name { font-size: 11px; }
+  .footer-bar { padding: 10px 18px; font-size: 10px; }
+  .section-header { padding-bottom: 7px; }
+  h2 { font-size: 10px; }
+  .item-title { font-size: 16px; }
+  .item-desc { font-size: 13px; }
+  .tag { font-size: 12px; padding: 4px 11px; }
+  .stack-list { gap: 7px; }
+  .about-photo { max-width: 100%; margin: 0 auto; }
+  .grid-2 { grid-template-columns: 1fr; gap: 18px; }
+  .timeline { padding-left: 36px; }
+  .timeline::before { left: 14px; width: 3px; }
+  .tl-item::before { left: -22px; width: 10px; height: 10px; }
+}
+
+/* Kleine bis mittlere Tablets (481px - 680px) */
+@media (min-width: 481px) and (max-width: 680px) {
+  .page { padding: 75px 24px 36px; gap: 22px; }
+  #hero { padding: 56px 24px; justify-content: center; align-items: center; }
+  nav { padding: 16px 24px; }
+  .hero-name { font-size: 48px; text-align: center; }
+  .footer-bar { padding: 11px 24px; }
+  .grid-2 { grid-template-columns: 1fr; gap: 22px; }
+  .about-photo { max-width: 100%; margin: 0 auto; }
+}
+
+/* Mittlere Tablets (681px - 900px) */
+@media (min-width: 681px) and (max-width: 900px) {
+  .page { padding: 80px 32px 40px; gap: 24px; }
+  #hero { padding: 60px 32px; }
+  nav { padding: 17px 32px; }
+  .hero-name { font-size: clamp(48px, 8vw, 100px); }
+  .footer-bar { padding: 12px 32px; }
+  .grid-2 { grid-template-columns: 1fr 1fr; gap: 28px 40px; }
+}
+
+/* Große Tablets & Desktop (901px - 1199px) */
+@media (min-width: 901px) and (max-width: 1199px) {
+  .page { padding: 85px 50px 44px; gap: 26px; }
+  #hero { padding: 66px 50px; }
+  nav { padding: 18px 50px; }
+  .footer-bar { padding: 12px 50px; }
+}
+
+/* Desktop (1200px+) */
+@media (min-width: 1200px) {
+  .page { padding: 90px 72px 48px; gap: 28px; }
+  #hero { padding: 72px 72px; }
+  nav { padding: 18px 72px; }
+  .footer-bar { padding: 12px 72px; }
+}
+  </style>
+</head>
+<body>
+
+  <nav id="main-nav">
+    <span class="nav-name">Matteo</span>
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#stack">Was ich kann</a>
+      <a href="#experience">Erfahrung</a>
+    </div>
+  </nav>
+
+  <section class="page" id="hero">
+    <div class="hero-name">MATTEO</div>
+  </section>
+
+  <section class="page" id="about">
+    <div class="section-header">
+      <h2>About</h2>
+      <span class="section-num"></span>
+    </div>
+    <div>
+      <div class="grid-2" style="margin-bottom: 40px; align-items: start;">
+
+        <div>
+          <div class="item-title" style="font-size:20px; margin-bottom: 16px;">Plattformentwicklung ganz einfach.</div>
+          <p class="item-desc">
+            Aktuell in der Ausbildung als Plattformenentwickler bei Sunrise GmbH.
+            Ich habe Erfahrung mit Cisco, Huawei und Juniper Infrastruktur,
+            automatisiere mit Ansible und arbeite mit Linux RedHat.
+            Neben der Arbeit trainiere ich MMA, Kraft und laufe Langstrecke.<br><br>
+            Ich interessiere mich fur Netzwerktechnik auf allen Layern:
+            vom physischen Kabel bis zum Routing.
+          </p>
+          <div style="margin-top:28px;">
+            <div style="font-family:'Space Mono',monospace; font-size:11px; letter-spacing:0.15em; text-transform:uppercase; opacity:0.45; margin-bottom:14px;"></div>
+            <p style="font-size:13px; opacity:0.7; line-height:2.2;">
+              <span class="status-dot"></span>
+              Zürich, CH<br>
+              2007 geboren<br>
+              <a href="mailto:matteolehnert@gmail.com" style="text-decoration:none; opacity:1;">matteolehnert@gmail.com</a>
+            </p>
+          </div>
+        </div>
+
+        <div style="display:flex; justify-content:flex-end;">
+          <img src="foto.jpg" alt="Matteo" class="about-photo" loading="lazy">
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="page" id="stack">
+    <div class="section-header">
+      <h2>Was ich kann</h2>
+      <span class="section-num"></span>
+    </div>
+    <div>
+      <div class="grid-2" style="margin-bottom: 36px;">
+        <div>
+          <p style="font-family:'Space Mono',monospace; font-size:11px; letter-spacing:0.15em; text-transform:uppercase; opacity:0.45; margin-bottom:18px;">Netzwerktechnik</p>
+          <div class="stack-list">
+            <span class="tag">Cisco IOS</span><span class="tag">Huawei</span>
+            <span class="tag">Juniper JunOS</span><span class="tag">BGP</span>
+            <span class="tag">OSPF</span><span class="tag">MPLS</span>
+            <span class="tag">VLANs</span><span class="tag">DHCP</span><span class="tag">DNS</span>
+          </div>
+        </div>
+        <div>
+          <p style="font-family:'Space Mono',monospace; font-size:11px; letter-spacing:0.15em; text-transform:uppercase; opacity:0.45; margin-bottom:18px;">Systeme &amp; Code</p>
+          <div class="stack-list">
+            <span class="tag">Debian</span><span class="tag">Ubuntu</span>
+            <span class="tag">RedHat</span><span class="tag">Ansible</span>
+            <span class="tag">Python</span><span class="tag">Apache</span>
+            <span class="tag">Git</span><span class="tag">YAML</span>
+            <span class="tag">PHP</span><span class="tag">MySQL</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="page" id="experience">
+    <div class="section-header">
+      <h2>Erfahrungen &amp; Bildung</h2>
+      <span class="section-num"></span>
+    </div>
+    <div class="grid-2">
+      <div class="timeline">
+        <div class="tl-item">
+          <div class="tl-date">2023 – heute</div>
+          <div class="tl-title">Plattformenentwickler EFZ</div>
+          <div class="tl-sub">Sunrise GmbH, Zürich</div>
+          <p class="item-desc" style="margin-top:8px;">Basislehrjahr im BBC. Routing-Grundlagen in IP-Transport. Linux im Unix Department. Cisco, Huawei und Juniper Infrastruktur als Tiefpunkt.</p>
+        </div>
+        <div class="tl-item">
+          <div class="tl-date">2023 – heute</div>
+          <div class="tl-title">Berufsfachschule</div>
+          <div class="tl-sub">BBW Berufsbildungsschule Winterthur, Zürich</div>
+          <p class="item-desc" style="margin-top:8px;">Grundlagen der Informatik. Abschluss aller Module der Informatikausbildung.</p>
+        </div>
+      </div>
+      <div>
+        <div style="font-family:'Space Mono',monospace; font-size:11px; letter-spacing:0.15em; text-transform:uppercase; opacity:0.45; margin-bottom:18px;">Links</div>
+        <div style="display:flex; flex-direction:column; gap:14px; font-family:'Space Mono',monospace; font-size:13px;">
+          <a href="mailto:matteolehnert@gmail.com">Email</a>
+          <a href="https://github.com/MatteoLehn" target="_blank" rel="noopener">GitHub</a>
+          <a href="https://www.linkedin.com/in/matteo-lehnert/" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="https://www.instagram.com/matteo.lhnt/" target="_blank" rel="noopener">Instagram</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="footer-bar" id="main-footer">
+    <span id="clock" class="footer-sans"></span>
+  </div>
+
+  <script>
+    function updateClock() {
+      const now = new Date();
+      const h = String(now.getHours()).padStart(2,'0');
+      const m = String(now.getMinutes()).padStart(2,'0');
+      const s = String(now.getSeconds()).padStart(2,'0');
+      const el = document.getElementById('clock');
+      if (el) el.textContent = h+':'+m+':'+s+' CET';
+    }
+    updateClock();
+    setInterval(updateClock, 1000);
+
+    const nav = document.getElementById('main-nav');
+    const footer = document.getElementById('main-footer');
+    const hero = document.getElementById('hero');
+
+    function handleNavVisibility() {
+      const threshold = hero.offsetHeight * 0.6;
+      if (window.scrollY > threshold) {
+        nav.classList.add('visible');
+        footer.classList.add('visible');
+      } else {
+        nav.classList.remove('visible');
+        footer.classList.remove('visible');
+      }
+    }
+    window.addEventListener('scroll', handleNavVisibility);
+    handleNavVisibility();
+
+    let lastY = window.scrollY, ticking = false, skewTimeout;
+    function applySkew() {
+      const currentY = window.scrollY;
+      const delta = currentY - lastY;
+      const skew = Math.min(Math.max(delta * 0.045, -7), 7);
+      lastY = currentY;
+      document.querySelectorAll('.page').forEach(el => {
+        el.style.transform = 'skewY(' + skew + 'deg)';
+      });
+      clearTimeout(skewTimeout);
+      skewTimeout = setTimeout(() => {
+        document.querySelectorAll('.page').forEach(el => {
+          el.style.transform = 'skewY(0deg)';
+        });
+      }, 150);
+      ticking = false;
+    }
+    window.addEventListener('scroll', () => {
+      if (!ticking) { requestAnimationFrame(applySkew); ticking = true; }
+    });;
+  
+  </script>
+
+</body>
+</html>
