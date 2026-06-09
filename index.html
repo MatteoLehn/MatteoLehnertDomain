@@ -2,38 +2,34 @@
 <html lang="de">
 <head>
   <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Matteo Lehnert – Plattformenentwickler EFZ aus Zürich. Erfahrung mit Cisco, Huawei, Juniper, Ansible, Linux und Netzwerktechnik." />
+  <meta name="keywords" content="Plattformenentwickler, Netzwerk, Cisco, Huawei, Juniper, Ansible, Linux, Zürich, Karriere, Portfolio" />
+  <meta name="author" content="Matteo Lehnert">
+  <meta name="robots" content="index, follow">
+  <meta property="og:title" content="Matteo Lehnert – Portfolio" />
+  <meta property="og:description" content="Plattformenentwickler EFZ aus Zürich. Erfahrung mit Netzwerktechnik, Automatisierung und Linux." />
+  <meta property="og:type" content="website" />
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="favicon.svg">
   <title>Matteo – Portfolio</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@300;400;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;600&family=Space+Mono:wght@400;700&display=swap');
-
     :root { --bg: #0015e8; --text: #f0f0f0; }
     * { box-sizing: border-box; margin: 0; padding: 0; }
     html { overflow-y: scroll; height: 100%; }
     body {
       background: var(--bg);
       color: var(--text);
-      font-family: 'Lora', serif, 'Space Grotesk', sans-serif;
+      font-family: 'Space Grotesk', 'Inter', sans-serif;
       height: 100%;
       cursor: crosshair;
     }
 
-    /* Lora helper class per your template */
-    .lora-main {
-      font-family: "Lora", serif;
-      font-optical-sizing: auto;
-      font-weight: 400;
-      font-style: normal;
-    }
-
-    /* Better sans for footer */
     .footer-sans {
-      font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+      font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
       font-weight: 500;
       font-style: normal;
     }
@@ -59,11 +55,10 @@
     .nav-links a:hover { opacity: 1; }
 
     .page {
-      /* let sections size to their content to avoid huge empty blue gaps */
       min-height: auto;
       padding: 80px 40px 40px;
       position: relative;
-      border-top: none; /* removed section separators */
+      border-top: none;
       will-change: transform;
       transition: transform 0.25s ease;
       display: grid;
@@ -77,18 +72,19 @@
       flex-direction: column;
       justify-content: flex-end;
       align-items: flex-end;
-      padding: 56px 40px;
-      /* ensure homepage shows only the blue hero area initially */
+      padding: 8px 40px 12px;
       min-height: 100vh;
+      position: relative;
     }
     .hero-name {
-      font-family: 'Space Mono', monospace;
-      font-size: clamp(52px, 10vw, 130px);
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(80px, 12vw, 160px);
       font-weight: 700;
-      line-height: 0.88;
-      letter-spacing: -0.03em;
+      line-height: 0.92;
+      letter-spacing: 0.0em;
       text-transform: uppercase;
       text-align: right;
+      margin-bottom: -50px;
     }
 
     .status-dot {
@@ -103,16 +99,14 @@
       padding-bottom: 8px;
       position: relative;
     }
-    /* removed section underline separators per request */
-    h2 { font-family: 'Lora', serif; font-size: 14px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; opacity: 0.9; }
-    .section-num { font-family: 'Lora', serif; font-size: 13px; font-weight: 700; opacity: 0.9; letter-spacing: 0.06em; }
+    h2 { font-family: 'Space Grotesk', sans-serif; font-size: 14px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; opacity: 0.9; }
+    .section-num { font-family: 'Space Grotesk', sans-serif; font-size: 13px; font-weight: 700; opacity: 0.9; letter-spacing: 0.06em; }
 
     .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 32px 48px; align-content: start; }
 
     .item-title { font-size: 16px; font-weight: 600; margin-bottom: 4px; }
-    .item-desc { font-size: 13px; opacity: 0.8; line-height: 1.6; }
+    .item-desc { font-size: 13px; opacity: 0.8; line-height: 1.8; font-family: 'Inter', sans-serif; }
 
-    /* Photo */
     .about-photo {
       width: 100%;
       max-width: 280px;
@@ -124,27 +118,33 @@
       border-radius: 8px;
       box-shadow: 0 10px 30px rgba(0,0,0,0.45);
     }
+    .about-photo-wrap {
+      display: flex;
+      justify-content: flex-end;
+    }
 
-    .stack-list { display: flex; flex-wrap: wrap; gap: 8px; align-content: flex-start; }
+    .stack-list { display: flex; flex-wrap: wrap; gap: 10px; align-content: flex-start; }
     .tag {
       background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
-      padding: 6px 14px;
-      font-size: 12px; font-family: 'Space Mono', monospace; letter-spacing: 0.05em;
+      padding: 8px 16px;
+      font-size: 13px; font-family: 'Space Mono', monospace; letter-spacing: 0.05em;
       border-radius: 999px;
       color: var(--text);
       opacity: 0.95;
       transition: transform 0.16s ease, box-shadow 0.16s ease;
       box-shadow: 0 2px 8px rgba(0,0,0,0.25) inset;
       cursor: default;
+      line-height: 1.4;
+      min-width: 90px;
+      text-align: center;
     }
     .tag:hover { transform: translateY(-2px); box-shadow: 0 6px 18px rgba(0,0,0,0.45) inset; }
 
-    /* timeline: vertical glow and dots centered on it */
     .timeline { position: relative; padding-left: 44px; }
     .timeline::before {
       content: '';
       position: absolute;
-      left: 16px; /* glow x-position */
+      left: 16px;
       top: 8px;
       bottom: 8px;
       width: 4px;
@@ -158,8 +158,8 @@
     .tl-item::before {
       content: '';
       position: absolute;
-      left: -34px; /* negative so dot overlaps the glow at left:16px */
-      top: px;
+      left: -34px;
+      top: 4px;
       width: 12px;
       height: 12px;
       border-radius: 50%;
@@ -181,46 +181,67 @@
     }
     .footer-bar.visible { opacity: 0.35; }
 
-  @media (max-width: 374px) {
-  .page { padding: 60px 16px 32px; gap: 16px; }
-  #hero { padding: 40px 16px; justify-content: center; align-items: center; }
-  nav { padding: 12px 16px; }
-  .hero-name { font-size: 32px; text-align: center; }
-  .footer-bar { padding: 10px 16px; font-size: 9px; }
+  @media (max-width: 320px) {
+  .page { padding: 30px 10px 10px; gap: 14px; }
+  #hero { padding: 6px 10px 6px; justify-content: flex-end; align-items: center; }
+  .hero-name { font-size: clamp(68px, 24vw, 150px); text-align: center; letter-spacing: 0.08em; margin-bottom: 0; line-height: 0.88; }
+  .about-photo-wrap { justify-content: center; }
+  .grid-2 { grid-template-columns: 1fr; gap: 18px; }
+  nav { padding: 10px 12px; }
+  .footer-bar { padding: 10px 12px; font-size: 8px; }
   .section-header { padding-bottom: 6px; }
   h2 { font-size: 10px; }
-  .item-title { font-size: 15px; }
+  .item-title { font-size: 14px; }
   .item-desc { font-size: 12px; }
-  .tag { font-size: 11px; padding: 3px 10px; }
+  .tag { font-size: 12px; padding: 7px 12px; }
   .stack-list { gap: 6px; }
-  .about-photo { max-width: 100%; margin: 0 auto; }
+  .about-photo { max-width: 180px; margin: 0 auto; }
+  .timeline { padding-left: 34px; }
+  .timeline::before { left: 12px; width: 2px; }
+  .tl-item::before { left: -20px; width: 8px; height: 8px; }
+}
+
+  @media (max-width: 374px) {
+  .page { padding: 40px 12px 18px; gap: 16px; }
+  #hero { padding: 10px 12px 8px; justify-content: flex-end; align-items: center; }
+  .hero-name { font-size: clamp(70px, 20vw, 130px); text-align: center; letter-spacing: 0.08em; margin-bottom: 0; }
+  .about-photo-wrap { justify-content: center; }
+  .grid-2 { grid-template-columns: 1fr; gap: 18px; }
+  nav { padding: 12px 16px; }
+  .footer-bar { padding: 10px 16px; font-size: 9px; }
+  .section-header { padding-bottom: 6px; }
+  h2 { font-size: 11px; }
+  .item-title { font-size: 15px; }
+  .item-desc { font-size: 13px; }
+  .tag { font-size: 13px; padding: 8px 14px; }
+  .stack-list { gap: 8px; }
+  .about-photo { max-width: 200px; margin: 0 auto; }
   .timeline { padding-left: 36px; }
   .timeline::before { left: 14px; width: 3px; }
   .tl-item::before { left: -22px; width: 10px; height: 10px; }
 }
 
-/* iPhone 15 & kleine Phones (375px - 480px) */
 @media (min-width: 375px) and (max-width: 480px) {
-  .page { padding: 70px 18px 34px; gap: 18px; }
-  #hero { padding: 50px 18px; justify-content: center; align-items: center; }
+  .page { padding: 40px 14px 14px; gap: 18px; }
+  #hero { padding: 10px 14px 10px; justify-content: flex-end; align-items: flex-end; }
   nav { padding: 14px 18px; }
-  .hero-name { font-size: 40px; text-align: center; }
+  .hero-name { font-size: clamp(76px, 18vw, 140px); text-align: right; letter-spacing: 0.08em; margin-bottom: 0; }
   .nav-name { font-size: 11px; }
   .footer-bar { padding: 10px 18px; font-size: 10px; }
   .section-header { padding-bottom: 7px; }
-  h2 { font-size: 10px; }
+  h2 { font-size: 12px; }
   .item-title { font-size: 16px; }
-  .item-desc { font-size: 13px; }
-  .tag { font-size: 12px; padding: 4px 11px; }
-  .stack-list { gap: 7px; }
-  .about-photo { max-width: 100%; margin: 0 auto; }
+  .item-desc { font-size: 14px; }
+  .tag { font-size: 13px; padding: 8px 15px; }
+  .stack-list { gap: 8px; }
+  .about-photo-wrap { justify-content: center; }
+  .about-photo { max-width: 210px; margin: 0 auto; }
   .grid-2 { grid-template-columns: 1fr; gap: 18px; }
   .timeline { padding-left: 36px; }
   .timeline::before { left: 14px; width: 3px; }
   .tl-item::before { left: -22px; width: 10px; height: 10px; }
 }
 
-/* Kleine bis mittlere Tablets (481px - 680px) */
 @media (min-width: 481px) and (max-width: 680px) {
   .page { padding: 75px 24px 36px; gap: 22px; }
   #hero { padding: 56px 24px; justify-content: center; align-items: center; }
@@ -228,10 +249,9 @@
   .hero-name { font-size: 48px; text-align: center; }
   .footer-bar { padding: 11px 24px; }
   .grid-2 { grid-template-columns: 1fr; gap: 22px; }
-  .about-photo { max-width: 100%; margin: 0 auto; }
+  .about-photo { max-width: 220px; margin: 0 auto; }
 }
 
-/* Mittlere Tablets (681px - 900px) */
 @media (min-width: 681px) and (max-width: 900px) {
   .page { padding: 80px 32px 40px; gap: 24px; }
   #hero { padding: 60px 32px; }
@@ -241,7 +261,6 @@
   .grid-2 { grid-template-columns: 1fr 1fr; gap: 28px 40px; }
 }
 
-/* Große Tablets & Desktop (901px - 1199px) */
 @media (min-width: 901px) and (max-width: 1199px) {
   .page { padding: 85px 50px 44px; gap: 26px; }
   #hero { padding: 66px 50px; }
@@ -249,7 +268,6 @@
   .footer-bar { padding: 12px 50px; }
 }
 
-/* Desktop (1200px+) */
 @media (min-width: 1200px) {
   .page { padding: 90px 72px 48px; gap: 28px; }
   #hero { padding: 72px 72px; }
@@ -302,7 +320,7 @@
           </div>
         </div>
 
-        <div style="display:flex; justify-content:flex-end;">
+        <div class="about-photo-wrap">
           <img src="foto.jpg" alt="Matteo" class="about-photo" loading="lazy">
         </div>
 
