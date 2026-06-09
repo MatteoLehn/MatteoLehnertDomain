@@ -1,0 +1,297 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <title>Matteo – Würfel</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Iosevka+Charon:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&family=Lora:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: #f0f0f0;
+      font-family: 'Lora', serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 32px;
+      gap: 20px;
+    }
+
+    .instructions {
+      font-family: 'Lora', serif;
+      font-size: 13px;
+      color: #555;
+      text-align: center;
+      max-width: 520px;
+      line-height: 1.7;
+    }
+    .print-btn {
+      font-family: 'Iosevka Charon', monospace;
+      font-size: 11px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      background: #1ab6ff;
+      color: #fff;
+      border: none;
+      padding: 12px 28px;
+      cursor: pointer;
+      transition: opacity 0.2s;
+    }
+    .print-btn:hover { opacity: 0.8; }
+
+    .cube-net {
+      display: grid;
+      grid-template-columns: 0.7cm 6cm 6cm 6cm 6cm 0.7cm;
+      grid-template-rows: 0.7cm 6cm 6cm 6cm 6cm 0.7cm;
+      background: #f0f0f0;
+    }
+
+    .face {
+      width: 6cm;
+      height: 6cm;
+      padding: 14px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      overflow: hidden;
+      border: 1.5px solid #999;
+    }
+    .face-top    { grid-column: 3; grid-row: 2; background: #1ab6ff; color: #fff; }
+    .face-left   { grid-column: 2; grid-row: 3; background: #f0f0f0; color: #1ab6ff; }
+    .face-front  { grid-column: 3; grid-row: 3; background: #1ab6ff; color: #fff; }
+    .face-right  { grid-column: 4; grid-row: 3; background: #f0f0f0; color: #1ab6ff; }
+    .face-back   { grid-column: 5; grid-row: 3; background: #1ab6ff; color: #fff; }
+    .face-bottom { grid-column: 3; grid-row: 4; background: #f0f0f0; color: #1ab6ff; }
+
+    .tab {
+      background: #ddd;
+      border: 1.5px dashed #aaa;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #bbb;
+    }
+    .tab-h {
+      width: 6cm;
+      height: 0.7cm;
+      clip-path: polygon(10% 0%, 90% 0%, 100% 100%, 0% 100%);
+    }
+    .tab-h-up {
+      width: 6cm;
+      height: 0.7cm;
+      clip-path: polygon(0% 0%, 100% 0%, 90% 100%, 10% 100%);
+    }
+    .tab-v-right {
+      width: 0.7cm;
+      height: 6cm;
+      clip-path: polygon(0% 0%, 100% 10%, 100% 90%, 0% 100%);
+    }
+
+    .tab-left-top  { grid-column: 2; grid-row: 2; align-self: end; }
+    .tab-left-bot  { grid-column: 2; grid-row: 4; }
+    .tab-right-top { grid-column: 4; grid-row: 2; align-self: end; }
+    .tab-right-bot { grid-column: 4; grid-row: 4; }
+    .tab-back-top  { grid-column: 5; grid-row: 2; align-self: end; }
+    .tab-back-bot  { grid-column: 5; grid-row: 4; }
+    .tab-back-right{ grid-column: 6; grid-row: 3; }
+
+    /* INHALTS-STILE */
+    .face-label {
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      opacity: 0.6;
+    }
+    .face-name {
+      font-family: 'Lora', serif;
+      font-size: 24px;
+      font-weight: 700;
+      text-transform: uppercase;
+      line-height: 0.95;
+      letter-spacing: -0.02em;
+    }
+    .face-sub {
+      font-size: 10px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      opacity: 0.6;
+    }
+
+    .face-skill-rows { display: flex; flex-direction: column; }
+    .face-skill-row {
+      font-family: 'Iosevka Charon', monospace;
+      font-size: 10px;
+      padding: 4px 0;
+      letter-spacing: 0.02em;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .face-skill-row.dark  { border-bottom: 1px solid rgba(255,255,255,0.15); }
+    .face-skill-row.dark:first-child  { border-top: 1px solid rgba(255,255,255,0.15); }
+    .face-skill-row.light { border-bottom: 1px solid rgba(26,182,255,0.15); }
+    .face-skill-row.light:first-child { border-top: 1px solid rgba(26,182,255,0.15); }
+    .face-skill-dot {
+      width: 3px; height: 3px;
+      border-radius: 50%;
+      opacity: 0.4;
+      flex-shrink: 0;
+    }
+    .face-skill-dot.dark  { background: #fff; }
+    .face-skill-dot.light { background: #1ab6ff; }
+
+    .face-photo-wrap {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+    }
+    .face-photo {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top center;
+      filter: grayscale(20%) contrast(1.05);
+    }
+    .face-photo-overlay {
+      position: absolute;
+      bottom: 10px;
+      left: 10px;
+      font-family: 'Iosevka Charon', monospace;
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #fff;
+      opacity: 0.9;
+      z-index: 2;
+    }
+
+    .exp-block {
+      border-left: 1px solid rgba(255,255,255,0.3);
+      padding-left: 8px;
+      margin-bottom: 10px;
+    }
+    .exp-date  { font-size: 10px; opacity: 0.6; letter-spacing: 0.1em; margin-bottom: 4px; }
+    .exp-title { font-size: 12px; font-weight: 700; }
+    .exp-sub   { font-size: 10px; opacity: 0.6; }
+
+    .link-row {
+      font-family: 'Iosevka Charon', monospace;
+      font-size: 10px;
+      padding: 6px 0;
+      border-bottom: 1px solid rgba(26,182,255,0.15);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: #1ab6ff;
+    }
+    .link-row:first-child { border-top: 1px solid rgba(26,182,255,0.15); }
+    .link-arrow { opacity: 0.35; font-size: 10px; }
+
+    @media print {
+      body { padding: 0; gap: 0; background: #fff; }
+      .instructions, .print-btn { display: none; }
+      .cube-net { margin: 0.5cm auto; background: #fff; }
+      @page { size: A4 landscape; margin: 0.3cm; }
+    }
+  </style>
+</head>
+<body>
+
+  <p class="instructions">
+    Entlang der Linien ausschneiden. Gestrichelte Tabs nach innen falten und mit Kleber befestigen.
+    Druck auf A4 Querformat empfohlen.
+  </p>
+  <button class="print-btn" onclick="window.print()">Drucken / Als PDF speichern</button>
+
+  <div class="cube-net">
+
+    <!-- TABS -->
+    <div class="tab tab-h tab-left-top"></div>
+    <div class="tab tab-h-up tab-left-bot"></div>
+    <div class="tab tab-h tab-right-top"></div>
+    <div class="tab tab-h-up tab-right-bot"></div>
+    <div class="tab tab-h tab-back-top"></div>
+    <div class="tab tab-h-up tab-back-bot"></div>
+    <div class="tab tab-v-right tab-back-right"></div>
+
+    <!-- FLÄCHE 1: Name (TOP) -->
+    <div class="face face-top">
+      <span class="face-label">Portfolio</span>
+      <div class="face-name">MATTEO<br>LEHNERT</div>
+      <span class="face-sub">Plattformenentwickler EFZ</span>
+    </div>
+
+    <!-- FLÄCHE 2: Foto (LEFT) -->
+    <div class="face face-left" style="padding:0; position:relative;">
+      <div class="face-photo-wrap">
+        <img src="foto.jpg" alt="Matteo" class="face-photo">
+        <span class="face-photo-overlay">Matteo Lehnert</span>
+      </div>
+    </div>
+
+    <!-- FLÄCHE 3: Netzwerktechnik (FRONT) -->
+    <div class="face face-front">
+      <span class="">Skills</span>
+      <span class="face-sub">Netzwerktechnik</span>
+      <div class="face-skill-rows">
+        <div class="face-skill-row dark"><span class=""></span>Cisco IOS</div>
+        <div class="face-skill-row dark"><span class=""></span>Huawei VRP</div>
+        <div class="face-skill-row dark"><span class=""></span>Juniper JunOS</div>
+        <div class="face-skill-row dark"><span class=""></span>BGP / OSPF / MPLS</div>
+        <div class="face-skill-row dark"><span class=""></span>VLANs / DHCP / DNS</div>
+      </div>
+      <span class="face-sub"></span>
+    </div>
+
+    <!-- FLÄCHE 4: Systeme (RIGHT) -->
+    <div class="face face-right">
+      <span class="face-label">Systeme &amp; Code</span>
+      <div class="face-skill-rows">
+        <div class="face-skill-row light"><span class=""></span>Debian / Ubuntu / RedHat</div>
+        <div class="face-skill-row light"><span class=""></span>Ansible</div>
+        <div class="face-skill-row light"><span class=""></span>Python / Bash</div>
+        <div class="face-skill-row light"><span class=""></span>Git</div>
+        <div class="face-skill-row light"><span class=""></span>Apache / NginX</div>
+      </div>
+      <span class="face-sub"></span>
+    </div>
+
+    <!-- FLÄCHE 5: Erfahrung (BACK) -->
+    <div class="face face-back">
+      <span class="face-label">Erfahrung &amp; Bildung</span>
+      <div>
+        <div class="exp-block">
+          <div class="exp-date">2023 – heute</div>
+          <div class="exp-title">Plattformenentwickler EFZ</div>
+          <div class="exp-sub">Sunrise GmbH, Zürich</div>
+        </div>
+        <div class="exp-block">
+          <div class="exp-date">2023 – heute</div>
+          <div class="exp-title">Berufsfachschule</div>
+          <div class="exp-sub">BBW Winterthur</div>
+        </div>
+      </div>
+        <span class="face-sub"></span>
+    </div>
+
+    <!-- FLÄCHE 6: Kontakt (BOTTOM) -->
+    <div class="face face-bottom">
+      <span class="face-label">Kontakt</span>
+      <div>
+        <div class="link-row">matteolehnert@gmail.com <span class="link-arrow">↗</span></div>
+        <div class="link-row">github.com/MatteoLehn <span class="link-arrow">↗</span></div>
+        <div class="link-row">linkedin.com/in/matteo-lehnert <span class="link-arrow">↗</span></div>
+        <div class="link-row">instagram.com/matteo.lhnt <span class="link-arrow">↗</span></div>
+      </div>
+      <span class="face-sub"></span>
+    </div>
+
+  </div>
+
+</body>
+</html>

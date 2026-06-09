@@ -15,27 +15,29 @@
   <title>Matteo – Portfolio</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@300;400;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+   <link href="https://fonts.googleapis.com/css2?family=Iosevka+Charon:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&family=Lora:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
   <style>
-    :root { --bg: #0015e8; --text: #f0f0f0; }
+    :root {
+      --bg: #1ab6ff;
+      --text: #f0f0f0;
+      --font-mono: 'Iosevka Charon', monospace;
+      --font-sans: 'Lora', serif;
+    }
     * { box-sizing: border-box; margin: 0; padding: 0; }
     html { overflow-y: scroll; height: 100%; }
     body {
       background: var(--bg);
       color: var(--text);
-      font-family: 'Space Grotesk', 'Inter', sans-serif;
+      font-family: var(--font-sans);
+      font-size: 16px;
       height: 100%;
       cursor: crosshair;
     }
 
-    .footer-sans {
-      font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-      font-weight: 500;
-      font-style: normal;
-    }
     a { color: var(--text); text-decoration: underline; text-underline-offset: 3px; }
     a:hover { opacity: 0.6; }
 
+    /* NAV */
     nav {
       position: fixed;
       top: 0; left: 0; right: 0;
@@ -49,16 +51,29 @@
       pointer-events: none;
     }
     nav.visible { opacity: 1; pointer-events: all; }
-    .nav-name { font-family: 'Space Mono', monospace; font-size: 12px; letter-spacing: 0.15em; text-transform: uppercase; opacity: 0.6; }
-    .nav-links { display: flex; gap: 28px; font-size: 12px; font-family: 'Space Mono', monospace; letter-spacing: 0.08em; text-transform: uppercase; }
+    .nav-name {
+      font-family: var(--font-mono);
+      font-size: 13px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      opacity: 0.85;
+    }
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      font-size: 13px;
+      font-family: var(--font-mono);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
     .nav-links a { text-decoration: none; opacity: 0.6; transition: opacity 0.2s; }
     .nav-links a:hover { opacity: 1; }
 
+    /* PAGES */
     .page {
       min-height: auto;
       padding: 80px 40px 40px;
       position: relative;
-      border-top: none;
       will-change: transform;
       transition: transform 0.25s ease;
       display: grid;
@@ -66,6 +81,7 @@
       gap: 24px;
     }
 
+    /* HERO */
     #hero {
       border-top: none;
       display: flex;
@@ -77,36 +93,133 @@
       position: relative;
     }
     .hero-name {
-      font-family: 'Space Grotesk', sans-serif;
+      font-family: var(--font-sans);
       font-size: clamp(80px, 12vw, 160px);
       font-weight: 700;
       line-height: 0.92;
-      letter-spacing: 0.0em;
+      letter-spacing: 0.035em;
       text-transform: uppercase;
       text-align: right;
       margin-bottom: -50px;
     }
+    /* no per-letter spacing wrappers anymore */
+      /* Iosevka Charon + Lora utility classes */
+      .lora-uniquifier {
+        font-family: "Lora", serif;
+        font-optical-sizing: auto;
+        font-weight: 400;
+        font-style: normal;
+      }
 
+      .iosevka-charon-light {
+        font-family: "Iosevka Charon", monospace;
+        font-weight: 300;
+        font-style: normal;
+      }
+
+      .iosevka-charon-regular {
+        font-family: "Iosevka Charon", monospace;
+        font-weight: 400;
+        font-style: normal;
+      }
+
+      .iosevka-charon-medium {
+        font-family: "Iosevka Charon", monospace;
+        font-weight: 500;
+        font-style: normal;
+      }
+
+      .iosevka-charon-bold {
+        font-family: "Iosevka Charon", monospace;
+        font-weight: 700;
+        font-style: normal;
+      }
+
+      .iosevka-charon-light-italic {
+        font-family: "Iosevka Charon", monospace;
+        font-weight: 300;
+        font-style: italic;
+      }
+
+      .iosevka-charon-regular-italic {
+        font-family: "Iosevka Charon", monospace;
+        font-weight: 400;
+        font-style: italic;
+      }
+
+      .iosevka-charon-medium-italic {
+        font-family: "Iosevka Charon", monospace;
+        font-weight: 500;
+        font-style: italic;
+      }
+
+      .iosevka-charon-bold-italic {
+        font-family: "Iosevka Charon", monospace;
+        font-weight: 700;
+        font-style: italic;
+      }
+
+    /* STATUS DOT */
     .status-dot {
-      display: inline-block; width: 7px; height: 7px;
-      border-radius: 50%; background: #4dff91; margin-right: 6px;
+      display: inline-block;
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      background: #003153;
+      margin-right: 6px;
+      margin-bottom: 1px;
       animation: pulse 2s infinite;
     }
-    @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
+    @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
 
+    /* SECTION HEADER */
     .section-header {
-      display: flex; justify-content: space-between; align-items: baseline;
-      padding-bottom: 8px;
-      position: relative;
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      border-top: none;
+      padding-top: 6px;
+      margin-top: 6px;
     }
-    h2 { font-family: 'Space Grotesk', sans-serif; font-size: 14px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; opacity: 0.9; }
-    .section-num { font-family: 'Space Grotesk', sans-serif; font-size: 13px; font-weight: 700; opacity: 0.9; letter-spacing: 0.06em; }
+    h2 {
+      font-family: var(--font-mono);
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      opacity: 0.9;
+    }
 
-    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 32px 48px; align-content: start; }
+    /* GRID */
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px 48px;
+      align-content: start;
+    }
 
-    .item-title { font-size: 16px; font-weight: 600; margin-bottom: 4px; }
-    .item-desc { font-size: 13px; opacity: 0.8; line-height: 1.8; font-family: 'Inter', sans-serif; }
-
+    /* ABOUT */
+    .item-title {
+      font-size: 24px;
+      font-weight: 700;
+      margin-bottom: 18px;
+      line-height: 1.25;
+    }
+    .item-desc {
+      font-size: 16px;
+      opacity: 0.95;
+      line-height: 1.9;
+    }
+    .about-meta {
+      margin-top: 28px;
+      font-size: 15px;
+      opacity: 0.95;
+      line-height: 1.9;
+    }
+    .about-meta a {
+      text-decoration: none;
+      color: var(--text);
+      opacity: 1;
+    }
     .about-photo {
       width: 100%;
       max-width: 280px;
@@ -114,166 +227,191 @@
       object-fit: cover;
       object-position: top center;
       display: block;
-      filter: grayscale(15%) contrast(1.05);
-      border-radius: 8px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.45);
+      filter: grayscale(10%) contrast(1.04);
+      border-radius: 4px;
     }
-    .about-photo-wrap {
+    .about-photo-wrap { display: flex; justify-content: flex-end; }
+
+    /* STACK */
+    .stack-label {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      opacity: 0.5;
+      margin-bottom: 16px;
+    }
+    .skill-rows { display: flex; flex-direction: column; }
+    .skill-row {
+      font-family: var(--font-mono);
+      font-size: 15px;
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(240,240,240,0.12);
+      opacity: 1;
+      letter-spacing: 0.02em;
       display: flex;
-      justify-content: flex-end;
+      align-items: center;
+      gap: 12px;
     }
-
-    .stack-list { display: flex; flex-wrap: wrap; gap: 10px; align-content: flex-start; }
-    .tag {
-      background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
-      padding: 8px 16px;
-      font-size: 13px; font-family: 'Space Mono', monospace; letter-spacing: 0.05em;
-      border-radius: 999px;
-      color: var(--text);
-      opacity: 0.95;
-      transition: transform 0.16s ease, box-shadow 0.16s ease;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.25) inset;
-      cursor: default;
-      line-height: 1.4;
-      min-width: 90px;
-      text-align: center;
-    }
-    .tag:hover { transform: translateY(-2px); box-shadow: 0 6px 18px rgba(0,0,0,0.45) inset; }
-
-    .timeline { position: relative; padding-left: 44px; }
-    .timeline::before {
-      content: '';
-      position: absolute;
-      left: 16px;
-      top: 8px;
-      bottom: 8px;
-      width: 4px;
-      border-radius: 3px;
-      background: linear-gradient(to bottom, rgba(255,255,255,0.14), rgba(255,255,255,0.04));
-      box-shadow: 0 8px 22px rgba(0,0,0,0.18), 0 0 16px rgba(255,255,255,0.02) inset;
-      filter: blur(0.8px);
-      opacity: 0.95;
-    }
-    .tl-item { position: relative; margin-bottom: 26px; }
-    .tl-item::before {
-      content: '';
-      position: absolute;
-      left: -34px;
-      top: 4px;
-      width: 12px;
-      height: 12px;
+    .skill-row:first-child { border-top: 1px solid rgba(240,240,240,0.12); }
+    .skill-dot {
+      width: 4px; height: 4px;
       border-radius: 50%;
       background: var(--text);
-      border: 2px solid rgba(255,255,255,0.08);
-      box-shadow: 0 8px 22px rgba(0,0,0,0.45);
+      opacity: 0.4;
+      flex-shrink: 0;
     }
-    .tl-date { font-family: 'Space Mono', monospace; font-size: 11px; opacity: 0.4; margin-bottom: 4px; }
-    .tl-title { font-size: 15px; font-weight: 600; }
-    .tl-sub { font-size: 13px; opacity: 0.6; margin-top: 2px; }
 
+    /* EXPERIENCE */
+    .exp-block {
+      border-left: 1px solid rgba(240,240,240,0.25);
+      padding-left: 20px;
+      margin-bottom: 28px;
+    }
+    .exp-block:last-child { margin-bottom: 0; }
+    .tl-date {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      opacity: 0.5;
+      margin-bottom: 6px;
+      letter-spacing: 0.08em;
+    }
+    .tl-title { font-size: 16px; font-weight: 700; margin-bottom: 4px; }
+    .tl-sub { font-size: 14px; opacity: 0.8; margin-bottom: 8px; }
+
+    /* LINKS */
+    .links-label {
+      font-family: var(--font-mono);
+      font-size: 13px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      opacity: 0.7;
+      margin-bottom: 16px;
+    }
+    .links-list { display: flex; flex-direction: column; }
+    .links-list a {
+      font-family: var(--font-mono);
+      font-size: 15px;
+      text-decoration: none;
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(240,240,240,0.12);
+      opacity: 0.95;
+      transition: opacity 0.2s;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .links-list a:first-child { border-top: 1px solid rgba(240,240,240,0.15); }
+    .links-list a:hover { opacity: 1; }
+    .link-arrow { opacity: 0.35; }
+
+    /* CUBE BUTTON */
+    .cube-btn-wrap {
+      display: flex;
+      justify-content: center;
+      margin-top: 48px;
+      padding-top: 24px;
+      border-top: 1px solid rgba(240,240,240,0.15);
+    }
+    .cube-btn {
+      font-family: var(--font-mono);
+      font-size: 13px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text);
+      background: none;
+      border: 1px solid rgba(240,240,240,0.35);
+      padding: 12px 24px;
+      cursor: crosshair;
+      opacity: 01;
+      transition: opacity 0.2s, border-color 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .cube-btn:hover { opacity: 1; border-color: rgba(240,240,240,0.9); }
+    .cube-icon { font-size: 16px; }
+
+    /* FOOTER */
     .footer-bar {
-      position: fixed; bottom: 0; left: 0; right: 0;
-      display: flex; justify-content: center; gap: 10px;
-      padding: 12px 40px; font-family: 'Space Mono', monospace;
-      font-size: 11px; letter-spacing: 0.08em;
-      pointer-events: none; z-index: 100;
-      opacity: 0; transition: opacity 0.5s ease;
+      position: fixed;
+      bottom: 0; left: 0; right: 0;
+      display: flex;
+      justify-content: center;
+      padding: 12px 40px;
+      font-family: var(--font-mono);
+      font-size: 13px;
+      letter-spacing: 0.08em;
+      pointer-events: none;
+      z-index: 100;
+      opacity: 0;
+      transition: opacity 0.5s ease;
     }
-    .footer-bar.visible { opacity: 0.35; }
+    .footer-bar.visible { opacity: 0.4; }
 
-  @media (max-width: 320px) {
-  .page { padding: 30px 10px 10px; gap: 14px; }
-  #hero { padding: 6px 10px 6px; justify-content: flex-end; align-items: center; }
-  .hero-name { font-size: clamp(68px, 24vw, 150px); text-align: center; letter-spacing: 0.08em; margin-bottom: 0; line-height: 0.88; }
-  .about-photo-wrap { justify-content: center; }
-  .grid-2 { grid-template-columns: 1fr; gap: 18px; }
-  nav { padding: 10px 12px; }
-  .footer-bar { padding: 10px 12px; font-size: 8px; }
-  .section-header { padding-bottom: 6px; }
-  h2 { font-size: 10px; }
-  .item-title { font-size: 14px; }
-  .item-desc { font-size: 12px; }
-  .tag { font-size: 12px; padding: 7px 12px; }
-  .stack-list { gap: 6px; }
-  .about-photo { max-width: 180px; margin: 0 auto; }
-  .timeline { padding-left: 34px; }
-  .timeline::before { left: 12px; width: 2px; }
-  .tl-item::before { left: -20px; width: 8px; height: 8px; }
-}
+    /* RESPONSIVE */
+    @media (max-width: 320px) {
+      .page { padding: 30px 10px 10px; gap: 14px; }
+      #hero { padding: 6px 10px 6px; justify-content: flex-end; align-items: center; }
+      .hero-name { font-size: clamp(68px, 24vw, 150px); text-align: center; margin-bottom: 0; line-height: 0.88; }
+      .about-photo-wrap { justify-content: center; }
+      .grid-2 { grid-template-columns: 1fr; gap: 18px; }
+      nav { padding: 10px 12px; }
+      .footer-bar { padding: 10px 12px; font-size: 12px; }
+      .about-photo { max-width: 180px; margin: 0 auto; }
+    }
 
-  @media (max-width: 374px) {
-  .page { padding: 40px 12px 18px; gap: 16px; }
-  #hero { padding: 10px 12px 8px; justify-content: flex-end; align-items: center; }
-  .hero-name { font-size: clamp(70px, 20vw, 130px); text-align: center; letter-spacing: 0.08em; margin-bottom: 0; }
-  .about-photo-wrap { justify-content: center; }
-  .grid-2 { grid-template-columns: 1fr; gap: 18px; }
-  nav { padding: 12px 16px; }
-  .footer-bar { padding: 10px 16px; font-size: 9px; }
-  .section-header { padding-bottom: 6px; }
-  h2 { font-size: 11px; }
-  .item-title { font-size: 15px; }
-  .item-desc { font-size: 13px; }
-  .tag { font-size: 13px; padding: 8px 14px; }
-  .stack-list { gap: 8px; }
-  .about-photo { max-width: 200px; margin: 0 auto; }
-  .timeline { padding-left: 36px; }
-  .timeline::before { left: 14px; width: 3px; }
-  .tl-item::before { left: -22px; width: 10px; height: 10px; }
-}
+    @media (max-width: 374px) {
+      .page { padding: 40px 12px 18px; gap: 16px; }
+      #hero { padding: 10px 12px 8px; justify-content: flex-end; align-items: center; }
+      .hero-name { font-size: clamp(70px, 20vw, 130px); text-align: center; margin-bottom: 0; letter-spacing: 0.02em; }
+      .about-photo-wrap { justify-content: center; }
+      .grid-2 { grid-template-columns: 1fr; gap: 18px; }
+      nav { padding: 12px 16px; }
+      .about-photo { max-width: 200px; margin: 0 auto; }
+    }
 
-@media (min-width: 375px) and (max-width: 480px) {
-  .page { padding: 40px 14px 14px; gap: 18px; }
-  #hero { padding: 10px 14px 10px; justify-content: flex-end; align-items: flex-end; }
-  nav { padding: 14px 18px; }
-  .hero-name { font-size: clamp(76px, 18vw, 140px); text-align: right; letter-spacing: 0.08em; margin-bottom: 0; }
-  .nav-name { font-size: 11px; }
-  .footer-bar { padding: 10px 18px; font-size: 10px; }
-  .section-header { padding-bottom: 7px; }
-  h2 { font-size: 12px; }
-  .item-title { font-size: 16px; }
-  .item-desc { font-size: 14px; }
-  .tag { font-size: 13px; padding: 8px 15px; }
-  .stack-list { gap: 8px; }
-  .about-photo-wrap { justify-content: center; }
-  .about-photo { max-width: 210px; margin: 0 auto; }
-  .grid-2 { grid-template-columns: 1fr; gap: 18px; }
-  .timeline { padding-left: 36px; }
-  .timeline::before { left: 14px; width: 3px; }
-  .tl-item::before { left: -22px; width: 10px; height: 10px; }
-}
+    @media (min-width: 375px) and (max-width: 480px) {
+      .page { padding: 40px 14px 14px; gap: 18px; }
+      #hero { padding: 10px 14px 10px; justify-content: flex-end; align-items: flex-end; }
+      nav { padding: 14px 18px; }
+      .hero-name { font-size: clamp(76px, 18vw, 140px); text-align: right; margin-bottom: 0; letter-spacing: 0.025em; }
+      .about-photo-wrap { justify-content: center; }
+      .about-photo { max-width: 210px; margin: 0 auto; }
+      .grid-2 { grid-template-columns: 1fr; gap: 18px; }
+    }
 
-@media (min-width: 481px) and (max-width: 680px) {
-  .page { padding: 75px 24px 36px; gap: 22px; }
-  #hero { padding: 56px 24px; justify-content: center; align-items: center; }
-  nav { padding: 16px 24px; }
-  .hero-name { font-size: 48px; text-align: center; }
-  .footer-bar { padding: 11px 24px; }
-  .grid-2 { grid-template-columns: 1fr; gap: 22px; }
-  .about-photo { max-width: 220px; margin: 0 auto; }
-}
+    @media (min-width: 481px) and (max-width: 680px) {
+      .page { padding: 75px 24px 36px; gap: 22px; }
+      #hero { padding: 56px 24px; justify-content: center; align-items: center; }
+      nav { padding: 16px 24px; }
+      .hero-name { font-size: 48px; text-align: center; letter-spacing: 0.03em; }
+      .grid-2 { grid-template-columns: 1fr; gap: 22px; }
+      .about-photo { max-width: 220px; margin: 0 auto; }
+    }
 
-@media (min-width: 681px) and (max-width: 900px) {
-  .page { padding: 80px 32px 40px; gap: 24px; }
-  #hero { padding: 60px 32px; }
-  nav { padding: 17px 32px; }
-  .hero-name { font-size: clamp(48px, 8vw, 100px); }
-  .footer-bar { padding: 12px 32px; }
-  .grid-2 { grid-template-columns: 1fr 1fr; gap: 28px 40px; }
-}
+    @media (min-width: 681px) and (max-width: 900px) {
+      .page { padding: 80px 32px 40px; gap: 24px; }
+      #hero { padding: 60px 32px; }
+      nav { padding: 17px 32px; }
+      .hero-name { font-size: clamp(48px, 8vw, 100px); }
+      .footer-bar { padding: 12px 32px; }
+      .grid-2 { grid-template-columns: 1fr 1fr; gap: 28px 40px; }
+    }
 
-@media (min-width: 901px) and (max-width: 1199px) {
-  .page { padding: 85px 50px 44px; gap: 26px; }
-  #hero { padding: 66px 50px; }
-  nav { padding: 18px 50px; }
-  .footer-bar { padding: 12px 50px; }
-}
+    @media (min-width: 901px) and (max-width: 1199px) {
+      .page { padding: 85px 50px 44px; gap: 26px; }
+      #hero { padding: 66px 50px; }
+      nav { padding: 18px 50px; }
+      .footer-bar { padding: 12px 50px; }
+    }
 
-@media (min-width: 1200px) {
-  .page { padding: 90px 72px 48px; gap: 28px; }
-  #hero { padding: 72px 72px; }
-  nav { padding: 18px 72px; }
-  .footer-bar { padding: 12px 72px; }
-}
+    @media (min-width: 1200px) {
+      .page { padding: 90px 72px 48px; gap: 28px; }
+      #hero { padding: 72px 72px; }
+      nav { padding: 18px 72px; }
+      .footer-bar { padding: 12px 72px; }
+    }
   </style>
 </head>
 <body>
@@ -287,111 +425,113 @@
     </div>
   </nav>
 
+  <!-- HERO -->
   <section class="page" id="hero">
     <div class="hero-name">MATTEO</div>
   </section>
 
+  <!-- ABOUT -->
   <section class="page" id="about">
     <div class="section-header">
       <h2>About</h2>
-      <span class="section-num"></span>
     </div>
     <div>
       <div class="grid-2" style="margin-bottom: 40px; align-items: start;">
-
         <div>
-          <div class="item-title" style="font-size:20px; margin-bottom: 16px;">Plattformentwicklung ganz einfach.</div>
+          <div class="item-title">Plattformentwicklung ganz einfach.</div>
           <p class="item-desc">
             Aktuell in der Ausbildung als Plattformenentwickler bei Sunrise GmbH.
             Ich habe Erfahrung mit Cisco, Huawei und Juniper Infrastruktur,
             automatisiere mit Ansible und arbeite mit Linux RedHat.
             Neben der Arbeit trainiere ich MMA, Kraft und laufe Langstrecke.<br><br>
-            Ich interessiere mich fur Netzwerktechnik auf allen Layern:
+            Ich interessiere mich für Netzwerktechnik auf allen Layern:
             vom physischen Kabel bis zum Routing.
           </p>
-          <div style="margin-top:28px;">
-            <div style="font-family:'Space Mono',monospace; font-size:11px; letter-spacing:0.15em; text-transform:uppercase; opacity:0.45; margin-bottom:14px;"></div>
-            <p style="font-size:13px; opacity:0.7; line-height:2.2;">
-              <span class="status-dot"></span>
-              Zürich, CH<br>
-              2007 geboren<br>
-              <a href="mailto:matteolehnert@gmail.com" style="text-decoration:none; opacity:1;">matteolehnert@gmail.com</a>
-            </p>
+          <div class="about-meta">
+            <span class="status-dot"></span>Zürich, CH<br>
+            2007 geboren<br>
+            <a href="mailto:matteolehnert@gmail.com">matteolehnert@gmail.com</a>
           </div>
         </div>
-
         <div class="about-photo-wrap">
           <img src="foto.jpg" alt="Matteo" class="about-photo" loading="lazy">
         </div>
-
       </div>
     </div>
   </section>
 
+  <!-- STACK -->
   <section class="page" id="stack">
     <div class="section-header">
       <h2>Was ich kann</h2>
-      <span class="section-num"></span>
     </div>
     <div>
       <div class="grid-2" style="margin-bottom: 36px;">
         <div>
-          <p style="font-family:'Space Mono',monospace; font-size:11px; letter-spacing:0.15em; text-transform:uppercase; opacity:0.45; margin-bottom:18px;">Netzwerktechnik</p>
-          <div class="stack-list">
-            <span class="tag">Cisco IOS</span><span class="tag">Huawei</span>
-            <span class="tag">Juniper JunOS</span><span class="tag">BGP</span>
-            <span class="tag">OSPF</span><span class="tag">MPLS</span>
-            <span class="tag">VLANs</span><span class="tag">DHCP</span><span class="tag">DNS</span>
+          <p class="stack-label">Netzwerktechnik</p>
+          <div class="skill-rows">
+            <div class="skill-row"><span class=""></span>Cisco IOS</div>
+            <div class="skill-row"><span class=""></span>Huawei VRP</div>
+            <div class="skill-row"><span class=""></span>Juniper JunOS</div>
+            <div class="skill-row"><span class=""></span>BGP / OSPF / MPLS</div>
+            <div class="skill-row"><span class=""></span>DHCP / DNS</div>
+            <div class="skill-row"><span class=""></span>VLANs</div>
           </div>
         </div>
         <div>
-          <p style="font-family:'Space Mono',monospace; font-size:11px; letter-spacing:0.15em; text-transform:uppercase; opacity:0.45; margin-bottom:18px;">Systeme &amp; Code</p>
-          <div class="stack-list">
-            <span class="tag">Debian</span><span class="tag">Ubuntu</span>
-            <span class="tag">RedHat</span><span class="tag">Ansible</span>
-            <span class="tag">Python</span><span class="tag">Apache</span>
-            <span class="tag">Git</span><span class="tag">YAML</span>
-            <span class="tag">PHP</span><span class="tag">MySQL</span>
+          <p class="stack-label">Systeme &amp; Code</p>
+          <div class="skill-rows">
+            <div class="skill-row"><span class=""></span>Debian / Ubuntu / RedHat</div>
+            <div class="skill-row"><span class=""></span>Ansible</div>
+            <div class="skill-row"><span class=""></span>Python / Bash</div>
+            <div class="skill-row"><span class=""></span>Git</div>
+            <div class="skill-row"><span class=""></span>Apache / NginX</div>
           </div>
         </div>
       </div>
     </div>
   </section>
 
+  <!-- EXPERIENCE -->
   <section class="page" id="experience">
     <div class="section-header">
       <h2>Erfahrungen &amp; Bildung</h2>
-      <span class="section-num"></span>
     </div>
     <div class="grid-2">
-      <div class="timeline">
-        <div class="tl-item">
+      <div>
+        <div class="exp-block">
           <div class="tl-date">2023 – heute</div>
           <div class="tl-title">Plattformenentwickler EFZ</div>
           <div class="tl-sub">Sunrise GmbH, Zürich</div>
-          <p class="item-desc" style="margin-top:8px;">Basislehrjahr im BBC. Routing-Grundlagen in IP-Transport. Linux im Unix Department. Cisco, Huawei und Juniper Infrastruktur als Tiefpunkt.</p>
+          <p class="item-desc">Basislehrjahr im BBC. Routing-Grundlagen in IP-Transport. Linux im Unix Department. Vertiefte Erfahrung in Cisco, Huawei und Juniper Infrastruktur.</p>
         </div>
-        <div class="tl-item">
+        <div class="exp-block">
           <div class="tl-date">2023 – heute</div>
           <div class="tl-title">Berufsfachschule</div>
           <div class="tl-sub">BBW Berufsbildungsschule Winterthur, Zürich</div>
-          <p class="item-desc" style="margin-top:8px;">Grundlagen der Informatik. Abschluss aller Module der Informatikausbildung.</p>
+          <p class="item-desc">Grundlagen der Informatik. Abschluss aller Module der Informatikausbildung.</p>
         </div>
       </div>
       <div>
-        <div style="font-family:'Space Mono',monospace; font-size:11px; letter-spacing:0.15em; text-transform:uppercase; opacity:0.45; margin-bottom:18px;">Links</div>
-        <div style="display:flex; flex-direction:column; gap:14px; font-family:'Space Mono',monospace; font-size:13px;">
-          <a href="mailto:matteolehnert@gmail.com">Email</a>
-          <a href="https://github.com/MatteoLehn" target="_blank" rel="noopener">GitHub</a>
-          <a href="https://www.linkedin.com/in/matteo-lehnert/" target="_blank" rel="noopener">LinkedIn</a>
-          <a href="https://www.instagram.com/matteo.lhnt/" target="_blank" rel="noopener">Instagram</a>
+        <p class="links-label">Links</p>
+        <div class="links-list">
+          <a href="mailto:matteolehnert@gmail.com">Email <span class="link-arrow">↗</span></a>
+          <a href="https://github.com/MatteoLehn" target="_blank" rel="noopener">GitHub <span class="link-arrow">↗</span></a>
+          <a href="https://www.linkedin.com/in/matteo-lehnert/" target="_blank" rel="noopener">LinkedIn <span class="link-arrow">↗</span></a>
+          <a href="https://www.instagram.com/matteo.lhnt/" target="_blank" rel="noopener">Instagram <span class="link-arrow">↗</span></a>
         </div>
       </div>
+    </div>
+    <div class="cube-btn-wrap">
+      <button class="cube-btn" onclick="window.open('print.html', '_blank')">
+        <span class="cube-icon">⬡</span>
+        Als Würfel drucken
+      </button>
     </div>
   </section>
 
   <div class="footer-bar" id="main-footer">
-    <span id="clock" class="footer-sans"></span>
+    <span id="clock"></span>
   </div>
 
   <script>
@@ -442,8 +582,7 @@
     }
     window.addEventListener('scroll', () => {
       if (!ticking) { requestAnimationFrame(applySkew); ticking = true; }
-    });;
-  
+    });
   </script>
 
 </body>

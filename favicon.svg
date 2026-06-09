@@ -1,4 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
-  <rect width="100" height="100" rx="20" fill="#0015e8" />
-  <path d="M32 38h36M32 50h36M32 62h36" stroke="#f0f0f0" stroke-width="8" stroke-linecap="round" />
+    <rect width="100" height="100" rx="20" fill="#1ab6ff" />
+      <text x="50" y="50" text-anchor="middle" dominant-baseline="middle"
+        font-family="Lora, serif"
+        font-weight="700" font-size="56" fill="#ffffff">M</text>
 </svg>
