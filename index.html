@@ -1,592 +1,318 @@
 <!doctype html>
-<html lang="de">
+<html lang="de-CH" class="no-js">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Matteo Lehnert, Plattformenentwickler EFZ aus Zürich. Erfahrung mit Cisco, Huawei, Juniper, Ansible, Linux und Netzwerktechnik." />
-  <meta name="keywords" content="Plattformenentwickler, Netzwerk, Cisco, Huawei, Juniper, Ansible, Linux, Zürich, Karriere, Portfolio" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Matteo Lehnert · Plattformentwickler in Zürich</title>
+  <meta name="description" content="Matteo Lehnert, Informatiker EFZ Plattformentwicklung in Ausbildung bei Sunrise in Zürich. Netzwerk, Linux und Automatisierung. Projekte, Werdegang und Kontakt.">
+  <meta name="keywords" content="Matteo Lehnert, Plattformentwickler, Informatiker EFZ, Plattformentwicklung, Sunrise, Zürich, Netzwerk, Linux, Ansible, Terraform, Portfolio">
   <meta name="author" content="Matteo Lehnert">
-  <meta name="robots" content="index, follow">
-  <meta property="og:title" content="Matteo Lehnert - Mein Portfolio" />
-  <meta property="og:description" content="Plattformenentwickler EFZ aus Zürich. Erfahrung mit Netzwerktechnik, Automatisierung und Linux." />
-  <meta property="og:type" content="website" />
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <meta name="theme-color" content="#0ea5e9">
+  <meta name="format-detection" content="telephone=no">
+  <link rel="canonical" href="https://matteolehnert.com/">
+  <link rel="alternate" hreflang="de-CH" href="https://matteolehnert.com/">
+  <link rel="alternate" hreflang="x-default" href="https://matteolehnert.com/">
+
+  <meta name="geo.region" content="CH-ZH">
+  <meta name="geo.placename" content="Zürich">
+
+  <meta property="og:type" content="profile">
+  <meta property="og:site_name" content="Matteo Lehnert">
+  <meta property="og:url" content="https://matteolehnert.com/">
+  <meta property="og:title" content="Matteo Lehnert · Plattformentwickler in Zürich">
+  <meta property="og:description" content="Informatiker EFZ Plattformentwicklung in Ausbildung bei Sunrise in Zürich. Projekte, Werdegang und Kontakt.">
+  <meta property="og:image" content="https://matteolehnert.com/og.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Matteo Lehnert, Plattformentwickler in Zürich">
+  <meta property="og:locale" content="de_CH">
+  <meta property="profile:first_name" content="Matteo">
+  <meta property="profile:last_name" content="Lehnert">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Matteo Lehnert · Plattformentwickler in Zürich">
+  <meta name="twitter:description" content="Informatiker EFZ Plattformentwicklung in Ausbildung bei Sunrise in Zürich.">
+  <meta name="twitter:image" content="https://matteolehnert.com/og.png">
+
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
-  <link rel="apple-touch-icon" href="favicon.svg">
-  <!-- Fallbacks for better search engine and older browser support -->
-  <link rel="icon" href="/favicon-48.png" sizes="48x48" type="image/png">
-  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
-  <title>Matteo – Portfolio</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-   <link href="https://fonts.googleapis.com/css2?family=Iosevka+Charon:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&family=Lora:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --bg: #17a4e6;
-      --text: #f0f0f0;
-      --font-mono: 'Iosevka Charon', monospace;
-      --font-sans: 'Lora', serif;
-    }
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    html { overflow-y: scroll; height: 100%; }
-    body {
-      background: var(--bg);
-      color: var(--text);
-      font-family: var(--font-sans);
-      font-size: 16px;
-      height: 100%;
-      cursor: crosshair;
-    }
-
-    a { color: var(--text); text-decoration: underline; text-underline-offset: 3px; }
-    a:hover { opacity: 0.6; }
-
-    /* NAV */
-    nav {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 18px 40px;
-      z-index: 100;
-      opacity: 0;
-      transition: opacity 0.5s ease;
-      pointer-events: none;
-    }
-    nav.visible { opacity: 1; pointer-events: all; }
-    .nav-name {
-      font-family: var(--font-mono);
-      font-size: 13px;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      opacity: 0.85;
-    }
-    .nav-links {
-      display: flex;
-      gap: 28px;
-      font-size: 13px;
-      font-family: var(--font-mono);
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-    }
-    .nav-links a { text-decoration: none; opacity: 0.6; transition: opacity 0.2s; }
-    .nav-links a:hover { opacity: 1; }
-
-    /* PAGES */
-    .page {
-      min-height: auto;
-      padding: 80px 40px 40px;
-      position: relative;
-      will-change: transform;
-      transition: transform 0.25s ease;
-      display: grid;
-      grid-template-rows: auto 1fr;
-      gap: 24px;
-    }
-
-    /* HERO */
-    #hero {
-      border-top: none;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-      align-items: flex-end;
-      padding: 8px 40px 12px;
-      min-height: 100vh;
-      position: relative;
-    }
-    .hero-name {
-      font-family: var(--font-sans);
-      font-size: clamp(80px, 12vw, 160px);
-      font-weight: 700;
-      line-height: 0.92;
-      letter-spacing: 0.035em;
-      text-transform: uppercase;
-      text-align: right;
-      margin-bottom: -50px;
-    }
-    /* no per-letter spacing wrappers anymore */
-      /* Iosevka Charon + Lora utility classes */
-      .lora-uniquifier {
-        font-family: "Lora", serif;
-        font-optical-sizing: auto;
-        font-weight: 400;
-        font-style: normal;
-      }
-
-      .iosevka-charon-light {
-        font-family: "Iosevka Charon", monospace;
-        font-weight: 300;
-        font-style: normal;
-      }
-
-      .iosevka-charon-regular {
-        font-family: "Iosevka Charon", monospace;
-        font-weight: 400;
-        font-style: normal;
-      }
-
-      .iosevka-charon-medium {
-        font-family: "Iosevka Charon", monospace;
-        font-weight: 500;
-        font-style: normal;
-      }
-
-      .iosevka-charon-bold {
-        font-family: "Iosevka Charon", monospace;
-        font-weight: 700;
-        font-style: normal;
-      }
-
-      .iosevka-charon-light-italic {
-        font-family: "Iosevka Charon", monospace;
-        font-weight: 300;
-        font-style: italic;
-      }
-
-      .iosevka-charon-regular-italic {
-        font-family: "Iosevka Charon", monospace;
-        font-weight: 400;
-        font-style: italic;
-      }
-
-      .iosevka-charon-medium-italic {
-        font-family: "Iosevka Charon", monospace;
-        font-weight: 500;
-        font-style: italic;
-      }
-
-      .iosevka-charon-bold-italic {
-        font-family: "Iosevka Charon", monospace;
-        font-weight: 700;
-        font-style: italic;
-      }
-
-    /* STATUS DOT */
-    .status-dot {
-      display: inline-block;
-      width: 7px; height: 7px;
-      border-radius: 50%;
-      background: #003153;
-      margin-right: 6px;
-      margin-bottom: 1px;
-      animation: pulse 2s infinite;
-    }
-    @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
-
-    /* SECTION HEADER */
-    .section-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      border-top: none;
-      padding-top: 6px;
-      margin-top: 6px;
-    }
-    h2 {
-      font-family: var(--font-mono);
-      font-size: 14px;
-      font-weight: 600;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      opacity: 0.9;
-    }
-
-    /* GRID */
-    .grid-2 {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 32px 48px;
-      align-content: start;
-    }
-
-    /* ABOUT */
-    .item-title {
-      font-size: 24px;
-      font-weight: 700;
-      margin-bottom: 18px;
-      line-height: 1.25;
-    }
-    .item-desc {
-      font-size: 16px;
-      opacity: 0.95;
-      line-height: 1.9;
-    }
-    .about-meta {
-      margin-top: 28px;
-      font-size: 15px;
-      opacity: 0.95;
-      line-height: 1.9;
-    }
-    .about-meta a {
-      text-decoration: none;
-      color: var(--text);
-      opacity: 1;
-    }
-    .about-photo {
-      width: 100%;
-      max-width: 280px;
-      aspect-ratio: 3/4;
-      object-fit: cover;
-      object-position: top center;
-      display: block;
-      filter: grayscale(10%) contrast(1.04);
-      border-radius: 4px;
-    }
-    .about-photo-wrap { display: flex; justify-content: flex-end; }
-
-    /* STACK */
-    .stack-label {
-      font-family: var(--font-mono);
-      font-size: 11px;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      opacity: 0.5;
-      margin-bottom: 16px;
-    }
-    .skill-rows { display: flex; flex-direction: column; }
-    .skill-row {
-      font-family: var(--font-mono);
-      font-size: 15px;
-      padding: 10px 0;
-      border-bottom: 1px solid rgba(240,240,240,0.12);
-      opacity: 1;
-      letter-spacing: 0.02em;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-    .skill-row:first-child { border-top: 1px solid rgba(240,240,240,0.12); }
-    .skill-dot {
-      width: 4px; height: 4px;
-      border-radius: 50%;
-      background: var(--text);
-      opacity: 0.4;
-      flex-shrink: 0;
-    }
-
-    /* EXPERIENCE */
-    .exp-block {
-      border-left: 1px solid rgba(240,240,240,0.25);
-      padding-left: 20px;
-      margin-bottom: 28px;
-    }
-    .exp-block:last-child { margin-bottom: 0; }
-    .tl-date {
-      font-family: var(--font-mono);
-      font-size: 12px;
-      opacity: 0.5;
-      margin-bottom: 6px;
-      letter-spacing: 0.08em;
-    }
-    .tl-title { font-size: 16px; font-weight: 700; margin-bottom: 4px; }
-    .tl-sub { font-size: 14px; opacity: 0.8; margin-bottom: 8px; }
-
-    /* LINKS */
-    .links-label {
-      font-family: var(--font-mono);
-      font-size: 13px;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      opacity: 0.7;
-      margin-bottom: 16px;
-    }
-    .links-list { display: flex; flex-direction: column; }
-    .links-list a {
-      font-family: var(--font-mono);
-      font-size: 15px;
-      text-decoration: none;
-      padding: 10px 0;
-      border-bottom: 1px solid rgba(240,240,240,0.12);
-      opacity: 0.95;
-      transition: opacity 0.2s;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    .links-list a:first-child { border-top: 1px solid rgba(240,240,240,0.15); }
-    .links-list a:hover { opacity: 1; }
-    .link-arrow { opacity: 0.35; }
-
-    /* CUBE BUTTON */
-    .cube-btn-wrap {
-      display: flex;
-      justify-content: center;
-      margin-top: 48px;
-      padding-top: 24px;
-      border-top: 1px solid rgba(240,240,240,0.15);
-    }
-    .cube-btn {
-      font-family: var(--font-mono);
-      font-size: 13px;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--text);
-      background: none;
-      border: 1px solid rgba(240,240,240,0.35);
-      padding: 12px 24px;
-      cursor: crosshair;
-      opacity: 01;
-      transition: opacity 0.2s, border-color 0.2s;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-    .cube-btn:hover { opacity: 1; border-color: rgba(240,240,240,0.9); }
-    .cube-icon { font-size: 16px; }
-
-    /* FOOTER */
-    .footer-bar {
-      position: fixed;
-      bottom: 0; left: 0; right: 0;
-      display: flex;
-      justify-content: center;
-      padding: 12px 40px;
-      font-family: var(--font-mono);
-      font-size: 13px;
-      letter-spacing: 0.08em;
-      pointer-events: none;
-      z-index: 100;
-      opacity: 0;
-      transition: opacity 0.5s ease;
-    }
-    .footer-bar.visible { opacity: 0.4; }
-
-    /* RESPONSIVE */
-    @media (max-width: 320px) {
-      .page { padding: 30px 10px 10px; gap: 14px; }
-      #hero { padding: 6px 10px 6px; justify-content: flex-end; align-items: center; }
-      .hero-name { font-size: clamp(68px, 24vw, 150px); text-align: center; margin-bottom: 0; line-height: 0.88; }
-      .about-photo-wrap { justify-content: center; }
-      .grid-2 { grid-template-columns: 1fr; gap: 18px; }
-      nav { padding: 10px 12px; }
-      .footer-bar { padding: 10px 12px; font-size: 12px; }
-      .about-photo { max-width: 180px; margin: 0 auto; }
-    }
-
-    @media (max-width: 374px) {
-      .page { padding: 40px 12px 18px; gap: 16px; }
-      #hero { padding: 10px 12px 8px; justify-content: flex-end; align-items: center; }
-      .hero-name { font-size: clamp(70px, 20vw, 130px); text-align: center; margin-bottom: 0; letter-spacing: 0.02em; }
-      .about-photo-wrap { justify-content: center; }
-      .grid-2 { grid-template-columns: 1fr; gap: 18px; }
-      nav { padding: 12px 16px; }
-      .about-photo { max-width: 200px; margin: 0 auto; }
-    }
-
-    @media (min-width: 375px) and (max-width: 480px) {
-      .page { padding: 40px 14px 14px; gap: 18px; }
-      #hero { padding: 10px 14px 10px; justify-content: flex-end; align-items: flex-end; }
-      nav { padding: 14px 18px; }
-      .hero-name { font-size: clamp(76px, 18vw, 140px); text-align: right; margin-bottom: 0; letter-spacing: 0.025em; }
-      .about-photo-wrap { justify-content: center; }
-      .about-photo { max-width: 210px; margin: 0 auto; }
-      .grid-2 { grid-template-columns: 1fr; gap: 18px; }
-    }
-
-    @media (min-width: 481px) and (max-width: 680px) {
-      .page { padding: 75px 24px 36px; gap: 22px; }
-      #hero { padding: 56px 24px; justify-content: center; align-items: center; }
-      nav { padding: 16px 24px; }
-      .hero-name { font-size: 48px; text-align: center; letter-spacing: 0.03em; }
-      .grid-2 { grid-template-columns: 1fr; gap: 22px; }
-      .about-photo { max-width: 220px; margin: 0 auto; }
-    }
-
-    @media (min-width: 681px) and (max-width: 900px) {
-      .page { padding: 80px 32px 40px; gap: 24px; }
-      #hero { padding: 60px 32px; }
-      nav { padding: 17px 32px; }
-      .hero-name { font-size: clamp(48px, 8vw, 100px); }
-      .footer-bar { padding: 12px 32px; }
-      .grid-2 { grid-template-columns: 1fr 1fr; gap: 28px 40px; }
-    }
-
-    @media (min-width: 901px) and (max-width: 1199px) {
-      .page { padding: 85px 50px 44px; gap: 26px; }
-      #hero { padding: 66px 50px; }
-      nav { padding: 18px 50px; }
-      .footer-bar { padding: 12px 50px; }
-    }
-
-    @media (min-width: 1200px) {
-      .page { padding: 90px 72px 48px; gap: 28px; }
-      #hero { padding: 72px 72px; }
-      nav { padding: 18px 72px; }
-      .footer-bar { padding: 12px 72px; }
-    }
-  </style>
-</head>
-<body>
-
-  <nav id="main-nav">
-    <span class="nav-name">Matteo</span>
-    <div class="nav-links">
-      <a href="#about">About</a>
-      <a href="#stack">Was ich kann</a>
-      <a href="#experience">Erfahrung</a>
-    </div>
-  </nav>
-
-  <!-- HERO -->
-  <section class="page" id="hero">
-    <div class="hero-name">MATTEO</div>
-  </section>
-
-  <!-- ABOUT -->
-  <section class="page" id="about">
-    <div class="section-header">
-      <h2>About</h2>
-    </div>
-    <div>
-      <div class="grid-2" style="margin-bottom: 40px; align-items: start;">
-        <div>
-          <div class="item-title">Plattformentwicklung ganz einfach.</div>
-          <p class="item-desc">
-            Aktuell in der Ausbildung als Plattformenentwickler bei Sunrise GmbH.
-            Ich habe Erfahrung mit Cisco, Huawei und Juniper Infrastruktur,
-            automatisiere mit Ansible und arbeite mit Linux RedHat.
-            Neben der Arbeit trainiere ich MMA, Kraft und laufe Langstrecke.<br><br>
-            Ich interessiere mich für Netzwerktechnik auf allen Layern:
-            vom physischen Kabel bis zum Routing.
-          </p>
-          <div class="about-meta">
-            <span class="status-dot"></span>Zürich, CH<br>
-            2007 geboren<br>
-            <a href="mailto:matteolehnert@gmail.com">matteolehnert@gmail.com</a>
-          </div>
-        </div>
-        <div class="about-photo-wrap">
-          <img src="foto.jpg" alt="Matteo" class="about-photo" loading="lazy">
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- STACK -->
-  <section class="page" id="stack">
-    <div class="section-header">
-      <h2>Was ich kann</h2>
-    </div>
-    <div>
-      <div class="grid-2" style="margin-bottom: 36px;">
-        <div>
-          <p class="stack-label">Netzwerktechnik</p>
-          <div class="skill-rows">
-            <div class="skill-row"><span class=""></span>Cisco IOS</div>
-            <div class="skill-row"><span class=""></span>Huawei VRP</div>
-            <div class="skill-row"><span class=""></span>Juniper JunOS</div>
-            <div class="skill-row"><span class=""></span>BGP / OSPF / MPLS</div>
-            <div class="skill-row"><span class=""></span>DHCP / DNS</div>
-            <div class="skill-row"><span class=""></span>VLANs</div>
-          </div>
-        </div>
-        <div>
-          <p class="stack-label">Systeme &amp; Code</p>
-          <div class="skill-rows">
-            <div class="skill-row"><span class=""></span>Debian / Ubuntu / RedHat</div>
-            <div class="skill-row"><span class=""></span>Ansible</div>
-            <div class="skill-row"><span class=""></span>Python / Bash</div>
-            <div class="skill-row"><span class=""></span>Git</div>
-            <div class="skill-row"><span class=""></span>Apache / NginX</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- EXPERIENCE -->
-  <section class="page" id="experience">
-    <div class="section-header">
-      <h2>Erfahrungen &amp; Bildung</h2>
-    </div>
-    <div class="grid-2">
-      <div>
-        <div class="exp-block">
-          <div class="tl-date">2023 – heute</div>
-          <div class="tl-title">Plattformenentwickler EFZ</div>
-          <div class="tl-sub">Sunrise GmbH, Zürich</div>
-          <p class="item-desc">Basislehrjahr im BBC. Routing-Grundlagen in IP-Transport. Linux im Unix Department. Vertiefte Erfahrung in Cisco, Huawei und Juniper Infrastruktur.</p>
-        </div>
-        <div class="exp-block">
-          <div class="tl-date">2023 – heute</div>
-          <div class="tl-title">Berufsfachschule</div>
-          <div class="tl-sub">BBW Berufsbildungsschule Winterthur, Zürich</div>
-          <p class="item-desc">Grundlagen der Informatik. Abschluss aller Module der Informatikausbildung.</p>
-        </div>
-      </div>
-      <div>
-        <p class="links-label">Links</p>
-        <div class="links-list">
-          <a href="mailto:matteolehnert@gmail.com">Email <span class="link-arrow">↗</span></a>
-          <a href="https://github.com/MatteoLehn" target="_blank" rel="noopener">GitHub <span class="link-arrow">↗</span></a>
-          <a href="https://www.linkedin.com/in/matteo-lehnert/" target="_blank" rel="noopener">LinkedIn <span class="link-arrow">↗</span></a>
-          <a href="https://www.instagram.com/matteo.lhnt/" target="_blank" rel="noopener">Instagram <span class="link-arrow">↗</span></a>
-        </div>
-      </div>
-    </div>
-    <div class="cube-btn-wrap">
-      <button class="cube-btn" onclick="window.open('print.html', '_blank')">
-        <span class="cube-icon">⬡</span>
-        Als Würfel drucken
-      </button>
-    </div>
-  </section>
-
-  <div class="footer-bar" id="main-footer">
-    <span id="clock"></span>
-  </div>
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link rel="manifest" href="site.webmanifest">
+  <link rel="preload" href="assets/fonts/geist-mono.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="assets/css/main.css">
+  <link rel="stylesheet" href="assets/css/aqua.css">
 
   <script>
-    function updateClock() {
-      const now = new Date();
-      const h = String(now.getHours()).padStart(2,'0');
-      const m = String(now.getMinutes()).padStart(2,'0');
-      const s = String(now.getSeconds()).padStart(2,'0');
-      const el = document.getElementById('clock');
-      if (el) el.textContent = h+':'+m+':'+s+' CET';
-    }
-    updateClock();
-    setInterval(updateClock, 1000);
-
-    const nav = document.getElementById('main-nav');
-    const footer = document.getElementById('main-footer');
-    const hero = document.getElementById('hero');
-
-    function handleNavVisibility() {
-      const threshold = hero.offsetHeight * 0.6;
-      if (window.scrollY > threshold) {
-        nav.classList.add('visible');
-        footer.classList.add('visible');
-      } else {
-        nav.classList.remove('visible');
-        footer.classList.remove('visible');
-      }
-    }
-    window.addEventListener('scroll', handleNavVisibility);
-    handleNavVisibility();
-
-    let lastY = window.scrollY, ticking = false, skewTimeout;
-    function applySkew() {
-      const currentY = window.scrollY;
-      const delta = currentY - lastY;
-      const skew = Math.min(Math.max(delta * 0.045, -7), 7);
-      lastY = currentY;
-      document.querySelectorAll('.page').forEach(el => {
-        el.style.transform = 'skewY(' + skew + 'deg)';
-      });
-      clearTimeout(skewTimeout);
-      skewTimeout = setTimeout(() => {
-        document.querySelectorAll('.page').forEach(el => {
-          el.style.transform = 'skewY(0deg)';
-        });
-      }, 150);
-      ticking = false;
-    }
-    window.addEventListener('scroll', () => {
-      if (!ticking) { requestAnimationFrame(applySkew); ticking = true; }
-    });
+    document.documentElement.classList.replace('no-js', 'js');
+    try { if (sessionStorage.getItem('ml-booted')) document.documentElement.classList.add('booted'); } catch (e) {}
   </script>
+  <script type="module" src="assets/js/main.js"></script>
 
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Person",
+        "@id": "https://matteolehnert.com/#person",
+        "name": "Matteo Lehnert",
+        "givenName": "Matteo",
+        "familyName": "Lehnert",
+        "url": "https://matteolehnert.com/",
+        "image": "https://matteolehnert.com/assets/img/portrait.jpg",
+        "jobTitle": "Informatiker EFZ Plattformentwicklung (in Ausbildung)",
+        "worksFor": { "@type": "Organization", "name": "Sunrise", "url": "https://www.sunrise.ch/" },
+        "alumniOf": { "@type": "EducationalOrganization", "name": "BBW Berufsbildungsschule Winterthur" },
+        "address": { "@type": "PostalAddress", "addressLocality": "Zürich", "addressRegion": "ZH", "addressCountry": "CH" },
+        "email": "mailto:matteolehnert@gmail.com",
+        "knowsLanguage": ["de", "en"],
+        "knowsAbout": ["Netzwerktechnik", "Routing", "BGP", "OSPF", "MPLS", "Linux", "Ansible", "Terraform", "OpenStack", "Docker", "Python", "React"],
+        "sameAs": ["https://github.com/MatteoLehn", "https://www.linkedin.com/in/matteo-lehnert/", "https://www.instagram.com/matteo.lhnt/"]
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://matteolehnert.com/#website",
+        "url": "https://matteolehnert.com/",
+        "name": "Matteo Lehnert",
+        "inLanguage": "de-CH",
+        "author": { "@id": "https://matteolehnert.com/#person" }
+      },
+      {
+        "@type": "ProfilePage",
+        "url": "https://matteolehnert.com/",
+        "name": "Matteo Lehnert · Plattformentwickler in Zürich",
+        "inLanguage": "de-CH",
+        "mainEntity": { "@id": "https://matteolehnert.com/#person" },
+        "isPartOf": { "@id": "https://matteolehnert.com/#website" }
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <svg class="defs" aria-hidden="true" width="0" height="0">
+    <symbol id="i-doc" viewBox="0 0 32 32"><path d="M7 3h13l6 6v20H7z" class="f"/><path d="M20 3v6h6M11 15h10M11 19h10M11 23h6"/></symbol>
+    <symbol id="i-folder" viewBox="0 0 32 32"><path d="M3 8h10l3 3h13v16H3z" class="f"/><path d="M3 13h26"/></symbol>
+    <symbol id="i-log" viewBox="0 0 32 32"><path d="M6 3h20v26H6z" class="f"/><path d="M10 9h3M15 9h7M10 14h3M15 14h7M10 19h3M15 19h7M10 24h3M15 24h4"/></symbol>
+    <symbol id="i-mail" viewBox="0 0 32 32"><path d="M3 7h26v18H3z" class="f"/><path d="M3 8l13 10L29 8"/></symbol>
+    <symbol id="i-term" viewBox="0 0 32 32"><path d="M3 5h26v22H3z" class="d"/><path d="M8 12l4 4-4 4M15 21h8" class="l"/></symbol>
+    <symbol id="i-cube" viewBox="0 0 32 32"><path d="M16 3l12 6v14l-12 6-12-6V9z" class="f"/><path d="M4 9l12 6 12-6M16 15v14"/></symbol>
+    <symbol id="i-wall" viewBox="0 0 32 32"><path d="M3 6h26v20H3z" class="f"/><path d="M3 13h26M3 20h26M11 6v7M21 6v7M7 13v7M16 13v7M25 13v7M11 20v6M21 20v6"/></symbol>
+    <symbol id="i-globe" viewBox="0 0 32 32"><circle cx="16" cy="16" r="13" class="f"/><path d="M3 16h26M16 3c-5 4-5 22 0 26M16 3c5 4 5 22 0 26"/></symbol>
+    <symbol id="i-fridge" viewBox="0 0 32 32"><path d="M8 3h16v26H8z" class="f"/><path d="M8 13h16M12 7v3M12 17v5"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 10 10"><path d="M2 8 8 2M3.2 2H8v4.8"/></symbol>
+  </svg>
+
+  <!-- Einstieg: Bildschirm einschalten, dann Zoom in den Desktop -->
+  <div class="boot" id="boot">
+    <div class="rig" id="rig">
+      <button class="crt" id="power" type="button" aria-label="Computer einschalten und Seite betreten">
+        <img src="assets/img/imac-snow.webp" alt="" width="1100" height="1134" decoding="async">
+        <span class="crt-shine" aria-hidden="true"></span>
+        <span class="crt-screen" id="crt-screen"><span class="boot-log" id="boot-log">_</span></span>
+      </button>
+    </div>
+    <p class="boot-hint mono">Klicken zum Einschalten</p>
+    <button class="boot-skip mono" id="skip" type="button">Überspringen</button>
+    <a class="boot-credit" href="https://commons.wikimedia.org/wiki/File:IMac_G3_Neige.png" target="_blank" rel="noopener">Foto iMac G3: True Tech Talk Time, CC BY-SA 4.0</a>
+  </div>
+
+  <div class="desk" id="desk" data-field>
+    <canvas class="wall" id="field" aria-hidden="true"></canvas>
+
+    <header class="menubar mono">
+      <div class="menu-wrap">
+        <button class="menu-btn menu-logo" type="button" aria-haspopup="true" aria-expanded="false">MatteOS</button>
+        <div class="menu" hidden>
+          <button type="button" data-open="about">Über Matteo</button>
+          <button type="button" data-action="reboot">Neu starten</button>
+          <a href="https://github.com/MatteoLehn/MatteoLehnertDomain" target="_blank" rel="noopener">Quellcode</a>
+          <a href="https://commons.wikimedia.org/wiki/File:IMac_G3_Neige.png" target="_blank" rel="noopener">Foto iMac G3: True Tech Talk Time, CC BY-SA 4.0</a>
+        </div>
+      </div>
+      <div class="menu-wrap">
+        <button class="menu-btn" type="button" aria-haspopup="true" aria-expanded="false">Öffnen</button>
+        <div class="menu" hidden>
+          <button type="button" data-open="firewall">Projekte</button>
+          <button type="button" data-open="werdegang">Werdegang</button>
+          <button type="button" data-open="terminal">Terminal</button>
+          <button type="button" data-open="kontakt">Kontakt</button>
+          <button type="button" data-open="seite">Über diese Seite</button>
+        </div>
+      </div>
+      <div class="menu-wrap">
+        <button class="menu-btn" type="button" aria-haspopup="true" aria-expanded="false">Links</button>
+        <div class="menu" hidden>
+          <a href="https://github.com/MatteoLehn" target="_blank" rel="noopener">GitHub</a>
+          <a href="https://www.linkedin.com/in/matteo-lehnert/" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="https://www.instagram.com/matteo.lhnt/" target="_blank" rel="noopener">Instagram</a>
+          <a href="mailto:matteolehnert@gmail.com">Mail schreiben</a>
+        </div>
+      </div>
+      <span class="menubar-right"><span class="led" aria-hidden="true"></span>Zürich <time id="clock">--:--:--</time></span>
+    </header>
+
+    <nav class="index mono" aria-label="Inhalt">
+      <p class="index-count"><span class="dia" aria-hidden="true"></span><span id="index-count">01 / 08</span></p>
+      <ol>
+        <li><button type="button" data-open="about">Über mich</button></li>
+        <li class="index-group" aria-hidden="true">Projekte</li>
+        <li><button type="button" data-open="firewall">Firewall-Umzug</button></li>
+        <li><button type="button" data-open="litho">litho.ch</button></li>
+        <li><button type="button" data-open="fridge">Smart Fridge</button></li>
+        <li class="index-group" aria-hidden="true">Mehr</li>
+        <li><button type="button" data-open="werdegang">Werdegang</button></li>
+        <li><button type="button" data-open="kontakt">Kontakt</button></li>
+        <li><button type="button" data-open="terminal">Terminal</button></li>
+        <li><button type="button" data-open="seite">Über diese Seite</button></li>
+      </ol>
+      <p class="index-hint only-fine">Pfeiltasten blättern</p>
+    </nav>
+
+    <main class="windows" id="windows">
+
+      <section class="win" id="win-about" data-w="760" data-pos="8,6" aria-labelledby="t-about">
+        <header class="win-bar"><button class="win-x" type="button" aria-label="Fenster schliessen"></button><h2 class="win-title mono" id="t-about">ueber-mich.txt</h2></header>
+        <div class="win-body about">
+          <figure class="portrait">
+            <div class="portrait-frame">
+              <canvas class="portrait-canvas" id="ascii" role="img" aria-label="Porträt von Matteo Lehnert, aus Textzeichen gesetzt"></canvas>
+              <img class="portrait-fallback" src="assets/img/portrait.jpg" alt="Porträt von Matteo Lehnert" width="900" height="1200" loading="lazy" decoding="async">
+            </div>
+            <figcaption class="mono cap"><span id="ascii-count">portrait.jpg</span><span class="only-fine">Maus drüber: Foto</span><span class="only-touch">Ziehen: Foto</span></figcaption>
+          </figure>
+          <div>
+            <h1 class="display">Matteo <em>Lehnert</em></h1>
+            <p class="lead">Ich bin im vierten Lehrjahr bei Sunrise in Zürich und arbeite mit Routern und Linux-Servern.</p>
+            <p>Seit August 2023 mache ich die Lehre als Informatiker EFZ mit Fachrichtung Plattformentwicklung. Mich interessiert Netzwerktechnik auf allen Layern, vom Kabel bis zum Routing. Im Herbst 2026 war ich für ein Praktikum einen Monat in Stockholm, bei Nrlyze.</p>
+            <p>Nebenbei baue ich Websites, zum Beispiel litho.ch. Ausserhalb der Arbeit trainiere ich MMA und Kraft, und ich laufe Langstrecke.</p>
+            <dl class="facts mono">
+              <div><dt>Ort</dt><dd>Zürich</dd></div>
+              <div><dt>Jahrgang</dt><dd>2007</dd></div>
+              <div><dt>Lehrabschluss</dt><dd>Sommer 2027</dd></div>
+              <div><dt>Sprachen</dt><dd>Deutsch, Englisch</dd></div>
+            </dl>
+            <p class="row"><button class="btn mono" type="button" data-open="firewall">Projekte ansehen</button><button class="btn btn-2 mono" type="button" data-open="kontakt">Kontakt</button></p>
+          </div>
+        </div>
+      </section>
+
+      <section class="win" id="win-firewall" data-w="720" data-pos="20,10" aria-labelledby="t-firewall">
+        <header class="win-bar"><button class="win-x" type="button" aria-label="Fenster schliessen"></button><h2 class="win-title mono" id="t-firewall">firewall-umzug</h2></header>
+        <div class="win-body">
+          <div class="pane"><canvas class="scene" data-scene="firewall" role="img" aria-label="Schema: sechs Server ziehen nacheinander hinter eine Firewall"></canvas></div>
+          <h3 class="display-2">Firewall-Umzug in der Cloud</h3>
+          <p class="meta mono">September bis Oktober 2026 · Praktikant bei Nrlyze, Stockholm</p>
+          <p>Sechs Server sollten hinter eine OPNsense-Firewall. Ich habe die Produktion in einer Sandbox nachgebaut und den Umzug dort in Etappen durchgespielt; das Runbook für die Produktion stammt auch von mir.</p>
+          <ol class="points">
+            <li>Die Sandbox wird mit Terraform und Ansible so aufgebaut, wie die Produktion heute aussieht. Die Skripte brechen ab, sobald sie auf ein anderes Projekt zeigen.</li>
+            <li>Das ganze Regelwerk (Firewall, NAT, DNS und Security Groups) passt für das Review auf ein paar Seiten.</li>
+            <li>Für die Kunden-VPNs habe ich ein separates Gateway vorgeschlagen: Jeder Tunnel läuft in einem eigenen Container und wird mit Ansible ausgerollt.</li>
+          </ol>
+          <ul class="tags mono"><li>OpenStack</li><li>Terraform</li><li>Ansible</li><li>OPNsense</li><li>WireGuard</li></ul>
+        </div>
+      </section>
+
+      <section class="win" id="win-litho" data-w="760" data-pos="16,8" aria-labelledby="t-litho">
+        <header class="win-bar"><button class="win-x" type="button" aria-label="Fenster schliessen"></button><h2 class="win-title mono" id="t-litho">litho.ch</h2></header>
+        <div class="win-body">
+          <div class="browser">
+            <div class="browser-bar mono">
+              <button type="button" id="shot-prev" aria-label="Vorheriger Screenshot">&lt;</button>
+              <button type="button" id="shot-next" aria-label="Nächster Screenshot">&gt;</button>
+              <span class="url" id="shot-url">https://www.litho.ch/</span>
+              <a href="https://www.litho.ch/" target="_blank" rel="noopener">Öffnen <svg class="arr"><use href="#i-arrow"/></svg></a>
+            </div>
+            <img id="shot" src="assets/img/litho-1.webp" alt="litho.ch, Startseite" width="1440" height="900" loading="lazy" decoding="async">
+          </div>
+          <h3 class="display-2">litho.ch</h3>
+          <p class="meta mono">2025 · Entwicklung · online</p>
+          <p>Website für LiTHO, Bildbearbeitung und Lithografie in Zürich. Im Portfolio zeigt ein Schieberegler bei den Retuschen das Bild vorher und nachher.</p>
+          <ol class="points">
+            <li>Portfolio mit Rasteransicht und Detailseiten, dazu eigene Seiten für Service, Making-of und About.</li>
+            <li>Kontaktformular über EmailJS mit reCAPTCHA gegen Spam. Ein eigener Mailserver ist nicht nötig.</li>
+            <li>Sitemap und Meta-Tags für die Suche, Impressum und Datenschutz als eigene Seiten.</li>
+          </ol>
+          <ul class="tags mono"><li>React 19</li><li>React Router</li><li>EmailJS</li><li>reCAPTCHA</li></ul>
+        </div>
+      </section>
+
+      <section class="win" id="win-fridge" data-w="720" data-pos="24,12" aria-labelledby="t-fridge">
+        <header class="win-bar"><button class="win-x" type="button" aria-label="Fenster schliessen"></button><h2 class="win-title mono" id="t-fridge">smart-fridge</h2></header>
+        <div class="win-body">
+          <div class="pane"><canvas class="scene" data-scene="fridge" role="img" aria-label="Schema: Kameras im Kühlschrank, Tunnel ins Homelab, Modell zählt Bananen, AWS schickt eine SMS"></canvas></div>
+          <h3 class="display-2">Smart Fridge</h3>
+          <p class="meta mono">Mai 2026 bis Februar 2027 · Module M241 und M245, BBW · läuft</p>
+          <p>Kameras im Kühlschrank fotografieren den Inhalt, ein eigenes YOLO-Modell zählt die Bananen. Liegen nur noch zwei da, schickt AWS eine SMS.</p>
+          <ol class="points">
+            <li>Die Kameras laufen mit Akku: aufwachen, Foto machen, hochladen und dann vier Stunden Deep Sleep.</li>
+            <li>Die Haupt-Kamera spannt ein eigenes WLAN auf und schickt die Bilder durch einen WireGuard-Tunnel ins Homelab.</li>
+            <li>Dort zählt das Modell die Bananen. Eine Lambda-Funktion prüft den Bestand in DynamoDB, SNS verschickt die SMS.</li>
+          </ol>
+          <ul class="tags mono"><li>ESP32-CAM</li><li>WireGuard</li><li>Proxmox</li><li>YOLO</li><li>AWS</li></ul>
+        </div>
+      </section>
+
+      <section class="win" id="win-werdegang" data-w="640" data-pos="30,9" aria-labelledby="t-werdegang">
+        <header class="win-bar"><button class="win-x" type="button" aria-label="Fenster schliessen"></button><h2 class="win-title mono" id="t-werdegang">werdegang.log</h2></header>
+        <div class="win-body">
+          <ol class="log">
+            <li><p class="mono when">Seit 2023</p><h3>Informatiker EFZ Plattformentwicklung</h3><p class="mono where">Sunrise, Zürich</p><p>Basislehrjahr mit überbetrieblichen Kursen am Berufsbildungscenter. Danach im IP-Transport, mit Routing auf Cisco, Huawei und Juniper, und in der Unix-Abteilung mit Red Hat und Ansible.</p></li>
+            <li><p class="mono when">Sep bis Okt 2026</p><h3>Praktikum als Software Developer</h3><p class="mono where">Nrlyze, Stockholm</p><p>Ein Monat über Erasmus+. Cloud-Infrastruktur mit OpenStack, Terraform und Ansible, dazu der Firewall-Umzug.</p></li>
+            <li><p class="mono when">Seit 2023</p><h3>Berufsfachschule</h3><p class="mono where">BBW Berufsbildungsschule Winterthur</p><p>Module zu Netzwerk, Servern, Cloud und Sicherheit. Qualifikationsverfahren im Sommer 2027.</p></li>
+          </ol>
+          <div class="skills">
+            <div><p class="mono skill-head">Netz</p><ul><li>Cisco IOS</li><li>Huawei VRP</li><li>Juniper Junos</li><li>BGP, OSPF, MPLS</li><li>VLAN, DHCP, DNS</li><li>WireGuard, OPNsense</li></ul></div>
+            <div><p class="mono skill-head">Server</p><ul><li>Red Hat, Debian, Ubuntu</li><li>Ansible</li><li>Terraform, OpenStack</li><li>Docker, Proxmox</li><li>Apache, Nginx</li><li>AWS</li></ul></div>
+            <div><p class="mono skill-head">Code</p><ul><li>Python</li><li>Bash</li><li>Git</li><li>JavaScript, React</li><li>C++ für ESP32</li></ul></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="win" id="win-kontakt" data-w="480" data-pos="50,22" aria-labelledby="t-kontakt">
+        <header class="win-bar"><button class="win-x" type="button" aria-label="Fenster schliessen"></button><h2 class="win-title mono" id="t-kontakt">Kontakt</h2></header>
+        <div class="win-body">
+          <p>Am schnellsten erreichst du mich per Mail.</p>
+          <a class="mail" href="mailto:matteolehnert@gmail.com">matteolehnert<wbr>@gmail.com</a>
+          <p class="row"><a class="btn mono" href="mailto:matteolehnert@gmail.com">Mail schreiben</a><button class="btn btn-2 mono" type="button" id="copy-mail"><span class="copy-label">Adresse kopieren</span></button></p>
+          <ul class="links mono">
+            <li><a href="https://github.com/MatteoLehn" target="_blank" rel="noopener">GitHub <svg class="arr"><use href="#i-arrow"/></svg></a></li>
+            <li><a href="https://www.linkedin.com/in/matteo-lehnert/" target="_blank" rel="noopener">LinkedIn <svg class="arr"><use href="#i-arrow"/></svg></a></li>
+            <li><a href="https://www.instagram.com/matteo.lhnt/" target="_blank" rel="noopener">Instagram <svg class="arr"><use href="#i-arrow"/></svg></a></li>
+            <li><a href="print.html" target="_blank" rel="noopener">Lebenslauf als Würfel drucken <svg class="arr"><use href="#i-arrow"/></svg></a></li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="win" id="win-seite" data-w="640" aria-labelledby="t-seite">
+        <header class="win-bar"><button class="win-x" type="button" aria-label="Fenster schliessen"></button><h2 class="win-title mono" id="t-seite">ueber-diese-seite.txt</h2></header>
+        <div class="win-body">
+          <h3 class="display-2">Wie diese Seite entstanden ist</h3>
+          <p class="meta mono">Version 3 · November 2026</p>
+          <p>Die erste Version war eine einfache Seite in Blau mit Lebenslauf. Für Version 3 wollte ich etwas Eigenes: einen alten Computer, den man einschaltet, und dahinter einen Desktop, auf dem man sich durchklickt.</p>
+          <p>Gebaut habe ich sie zusammen mit Claude Code, einem KI-Assistenten im Terminal. Ich habe die Richtung vorgegeben, Entwürfe verworfen und Rückmeldungen gegeben; Claude hat den Code geschrieben und im Browser getestet. Bis zu dieser Version brauchte es acht Runden.</p>
+          <ol class="points">
+            <li>Drei Seiten waren das Vorbild: tommybiglow.com für den Aqua-Look und den Zoom in den Bildschirm, madebyigor.com/lab für die Liste links mit Zähler, ivan.technology für die generativen Grafiken. Ihren JavaScript-Code haben wir mit dem Reverse-Engineering-Werkzeug rea untersucht und die Shader von Hand gelesen. Übernommen sind Ideen und Zahlenwerte, keine Bilder.</li>
+            <li>Die Seite ist reines HTML, CSS und JavaScript ohne Framework. Das Netz im Hintergrund zeichnet ein Canvas, das Porträt ein eigener WebGL-Shader, und die Schemas bei den Projekten sind ebenfalls Canvas.</li>
+            <li>Die Screenshots von litho.ch kommen aus einem Edge ohne Fenster, gesteuert über das DevTools-Protokoll. Bilder wurden mit ffmpeg verkleinert und als WebP gespeichert.</li>
+          </ol>
+          <ul class="tags mono"><li>Claude Code</li><li>rea</li><li>HTML, CSS, JavaScript</li><li>Canvas</li><li>WebGL</li><li>ffmpeg</li><li>GitHub Pages</li></ul>
+          <p class="row"><a class="btn mono" href="https://github.com/MatteoLehn/MatteoLehnertDomain" target="_blank" rel="noopener">Quellcode auf GitHub</a></p>
+          <p class="credit mono">Foto iMac G3: <a href="https://commons.wikimedia.org/wiki/File:IMac_G3_Neige.png" target="_blank" rel="noopener">True Tech Talk Time</a>, CC BY-SA 4.0. Schriften: Geist, Geist Mono und Instrument Serif, SIL Open Font License.</p>
+        </div>
+      </section>
+
+      <section class="win win-dark" id="win-terminal" data-w="600" data-pos="36,30" aria-labelledby="t-terminal">
+        <header class="win-bar"><button class="win-x" type="button" aria-label="Fenster schliessen"></button><h2 class="win-title mono" id="t-terminal">Terminal</h2></header>
+        <div class="win-body term" id="term">
+          <div class="term-out" id="term-out" aria-live="polite"></div>
+          <form class="term-line" id="term-form" autocomplete="off">
+            <label for="term-in">matteo@zrh:~$</label>
+            <input id="term-in" type="text" spellcheck="false" autocapitalize="off" autocorrect="off" aria-label="Befehl eingeben">
+          </form>
+        </div>
+      </section>
+    </main>
+
+  </div>
 </body>
 </html>
