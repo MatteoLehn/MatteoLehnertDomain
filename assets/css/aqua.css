@@ -1,0 +1,192 @@
+/* Aqua-Look: Schrift, Fenster, Menüleiste und Knöpfe im Stil von Mac OS X um 2001,
+   mit den Werten, die tommybiglow.com dafür benutzt. Liegt über main.css. */
+
+:root {
+  --sans: "Lucida Grande", "Lucida Sans Unicode", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --serif: var(--sans);
+  --mono: var(--sans);
+  --term: "Geist Mono", "Courier New", monospace;
+  --ink: #111;
+  --ink-2: #444;
+  --rule: rgba(0, 0, 0, .14);
+  --sel: #3b82f6;
+  --bar-h: 24px;
+  --field-line: rgba(255, 255, 255, .22);
+}
+
+body { font-size: 14px; line-height: 1.55; }
+.mono { font: 400 12px/1.4 var(--sans); letter-spacing: 0; text-transform: none; }
+
+/* Hintergrund: Aqua-Blau */
+.desk { background: radial-gradient(120% 90% at 22% 18%, #8fc7f4 0%, #4d9ce6 30%, #2a6fcb 62%, #174a9c 100%); }
+.boot { background: linear-gradient(160deg, #7dd3fc 0%, #38bdf8 25%, #0ea5e9 55%, #0284c7 80%, #0369a1 100%); }
+.boot-hint { font-weight: 500; letter-spacing: .18em; text-transform: uppercase; color: rgba(255, 255, 255, .8); text-shadow: 0 1px 3px rgba(0, 0, 0, .25); }
+.boot-skip { text-transform: uppercase; letter-spacing: .1em; font-size: 11px; }
+.crt { border: 1px solid rgba(0, 0, 0, .45); border-radius: 22px; background: linear-gradient(#fdfdfd, #dcdcdc); box-shadow: 0 24px 48px rgba(2, 100, 163, .45), inset 0 2px 0 #fff; }
+.crt-screen { border: 1px solid #555; }
+.crt-brand { font: 700 15px/1 var(--sans); font-style: normal; color: #555; }
+.crt-neck, .crt-foot { border: 1px solid rgba(0, 0, 0, .4); background: linear-gradient(#f4f4f4, #cfcfcf); }
+.boot-log { font-family: var(--term); }
+
+/* Menüleiste */
+.menubar {
+  padding: 0 6px; gap: 0; font-size: 14px;
+  background: linear-gradient(rgba(255, 255, 255, .95), rgba(240, 240, 240, .95) 45%, rgba(220, 220, 220, .95) 50%, rgba(230, 230, 230, .95));
+  border-bottom: 1px solid rgba(0, 0, 0, .3); box-shadow: 0 1px 4px rgba(0, 0, 0, .15);
+  -webkit-backdrop-filter: blur(4px); backdrop-filter: blur(4px);
+}
+.menu-btn { height: calc(var(--bar-h) - 1px); padding: 0 10px; font-size: 14px; }
+.menu-logo { font: 700 14px/1 var(--sans); }
+.menu-btn:hover, .menu-btn[aria-expanded="true"] { background: var(--sel); color: #fff; }
+.menu { padding: 4px 0; background: rgba(255, 255, 255, .95); border: 1px solid rgba(0, 0, 0, .3); border-top: 0; border-radius: 0 0 6px 6px; box-shadow: 0 8px 24px rgba(0, 0, 0, .2); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); }
+.menu > * { padding: 3px 16px; font-size: 14px; }
+.menu > *:hover, .menu > *:focus-visible { background: var(--sel); }
+.menubar-right { font-size: 13px; }
+.led { border: 0; background: radial-gradient(circle at 30% 30%, #8aff8a, #5cff5c 40%, #00c000); box-shadow: 0 0 0 1px #009a00; }
+
+/* Liste links */
+.index { text-shadow: 0 1px 2px rgba(0, 0, 0, .8), 0 0 2px rgba(0, 0, 0, .6); }
+.index-count { font-size: 12px; }
+.index-group, .index-hint { font-size: 11px; opacity: .85; }
+.index button { padding: 5px 10px; border: 0; border-radius: 5px; font-size: 14px; font-weight: 500; }
+.index button:hover { background: rgba(0, 0, 0, .35); text-shadow: none; }
+.index button[aria-current="true"] { background: linear-gradient(#6aa5f8, #2f6fe6); border: 0; color: #fff; text-shadow: 0 -1px 1px rgba(0, 0, 0, .35); box-shadow: 0 1px 4px rgba(0, 0, 0, .35), inset 0 1px rgba(255, 255, 255, .4); }
+
+/* Fenster mit Nadelstreifen */
+.win {
+  background-color: #ededed;
+  background-image: repeating-linear-gradient(0deg, transparent, transparent 1px, rgba(255, 255, 255, .7) 1px 2px);
+  border: 1px solid rgba(0, 0, 0, .4); border-radius: 8px;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, .4), inset 0 1px rgba(255, 255, 255, .8), inset 1px 0 rgba(255, 255, 255, .4), inset -1px 0 rgba(255, 255, 255, .4);
+}
+.win-bar, .win.is-active .win-bar {
+  height: 22px; padding: 0 70px; border-bottom: 1px solid #888;
+  background: linear-gradient(#f8f8f8, #d8d8d8 48%, #c4c4c4 52%, #b8b8b8); text-shadow: 0 1px rgba(255, 255, 255, .8);
+}
+/* drei Ampelknöpfe, nur Zierde */
+.win-bar::before {
+  content: ""; position: absolute; left: 8px; top: 4px; width: 55px; height: 13px;
+  background:
+    radial-gradient(circle at 5px 5px, #ff8a8a, #ff5c5c 3px, #e00000 6px, transparent 6.6px) 0 0 / 13px 13px no-repeat,
+    radial-gradient(circle at 5px 5px, #ffdf8a, #ffc95c 3px, #e09f00 6px, transparent 6.6px) 21px 0 / 13px 13px no-repeat,
+    radial-gradient(circle at 5px 5px, #8aff8a, #5cff5c 3px, #00c800 6px, transparent 6.6px) 42px 0 / 13px 13px no-repeat;
+}
+.win-title, .win.is-active .win-title { padding: 0; background: none; font: 600 13px/1 var(--sans); color: #000; }
+.win-nav { right: 6px; top: 2px; gap: 3px; }
+.win-nav button, .browser-bar button {
+  width: 24px; height: 17px; border: 1px solid #888; border-radius: 20px; font: 600 10px/1 var(--sans);
+  background: linear-gradient(#fafafa, #e0e0e0 48%, #cacaca 52%, #e8e8e8); box-shadow: inset 0 1px rgba(255, 255, 255, .9), 0 1px 2px rgba(0, 0, 0, .15);
+}
+.win-nav button:hover, .browser-bar button:hover { background: linear-gradient(#a8dcf8, #3ab5f0 40%, #0084c0 60%, #1aa0e0); color: #fff; border-color: #0069a8; }
+.win-body p { color: #333; }
+
+/* Schrift in den Fenstern */
+.display { font: 700 clamp(30px, 3.4vw, 40px)/1.05 var(--sans); letter-spacing: -.02em; }
+.display em { display: inline; padding: 0; font-style: normal; }
+.display-2 { font: 700 24px/1.15 var(--sans); letter-spacing: -.01em; }
+.win-body .lead { font-size: 15px; }
+.win-body .meta { color: #2563eb; font-size: 13px; }
+.log h3 { font: 700 17px/1.2 var(--sans); }
+.log .where { color: #2563eb; }
+.log li { border-left: 1px solid #999; }
+.log li::before { border: 1px solid #0069a8; background: radial-gradient(circle at 30% 30%, #a8dcf8, #3ab5f0 45%, #0084c0); }
+.skills { border-top: 1px solid #999; }
+.skills li { font: 400 13px/1.3 var(--sans); }
+.skill-head, .facts dt, .cap { font-size: 11px; text-transform: uppercase; letter-spacing: .06em; color: #666; }
+.facts dd { font-weight: 600; }
+.points li::before { font: 600 11px/1.6 var(--sans); color: #2563eb; }
+.mail { font: 700 clamp(20px, 3vw, 26px)/1.15 var(--sans); color: #2563eb; }
+.mail:hover { color: #1d4ed8; }
+
+/* Knöpfe und Marken */
+.btn, .btn-2 {
+  padding: 5px 16px; border: 1px solid #888; border-radius: 20px; color: #000; font: 500 13px/1.4 var(--sans);
+  background: linear-gradient(#fafafa, #e0e0e0 48%, #cacaca 52%, #e8e8e8);
+  box-shadow: inset 0 1px rgba(255, 255, 255, .9), inset 0 -1px rgba(0, 0, 0, .06), 0 1px 3px rgba(0, 0, 0, .15);
+}
+.btn:not(.btn-2) {
+  color: #fff; text-shadow: 0 -1px 1px rgba(0, 0, 0, .35); border-color: #0069a8;
+  background: linear-gradient(#a8dcf8, #3ab5f0 40%, #0084c0 60%, #1aa0e0);
+  box-shadow: inset 0 1px rgba(255, 255, 255, .75), 0 0 8px rgba(0, 150, 220, .35), 0 1px 3px rgba(0, 0, 0, .2);
+}
+.btn:hover { transform: none; filter: brightness(1.05); }
+.btn:active { transform: none; filter: brightness(.85); }
+.tags li { padding: 2px 10px; border: 1px solid #aaa; background: #fff; font-size: 12px; }
+.links a:hover { background: var(--sel); color: #fff; }
+.links a:hover use { stroke: #fff; }
+
+/* eingelassene Flächen */
+.portrait-frame, .pane, .browser { border: 1px solid #777; border-radius: 3px; box-shadow: inset 0 1px 3px rgba(0, 0, 0, .4), 0 1px rgba(255, 255, 255, .8); }
+.browser-bar { padding: 4px 6px; border-bottom: 1px solid #888; background: linear-gradient(#f4f4f4, #d6d6d6); font-size: 12px; }
+.browser-bar .url { border: 1px solid #999; border-radius: 3px; box-shadow: inset 0 1px 2px rgba(0, 0, 0, .2); }
+.browser-bar a { text-transform: none; color: #2563eb; }
+
+.win-dark { background: #0b0d10; }
+.term { font-family: var(--term); }
+:focus-visible { outline: 2px solid var(--sel); }
+
+@media (max-width: 720px) {
+  .win-bar, .win.is-active .win-bar { height: 28px; }
+  .win-bar::before { top: 7px; }
+  .win-nav { top: 3px; }
+  .win-nav button { width: 30px; height: 21px; }
+  .index button { background: rgba(0, 0, 0, .3); text-shadow: none; }
+  .windows { inset: calc(var(--bar-h) + 50px) 8px 12px 8px; }
+}
+
+/* Einstieg: Foto eines iMac G3, der Bildschirm liegt als Fläche darüber */
+.crt { position: relative; width: min(600px, 86vw, 66vh); padding: 0; border: 0; border-radius: 0; background: none; box-shadow: none; filter: drop-shadow(0 24px 40px rgba(2, 60, 110, .5)); }
+.crt img { width: 100%; height: auto; }
+.crt-screen {
+  position: absolute; left: 13.2%; top: 9.2%; width: 75.6%; height: 51.6%; aspect-ratio: auto;
+  padding: 4% 5%; border: 0; border-radius: 4% / 5%; background: radial-gradient(120% 100% at 50% 40%, #10151b, #05070a); box-shadow: inset 0 0 30px #000;
+}
+.crt:hover .crt-screen { box-shadow: inset 0 0 30px #000, 0 0 22px rgba(160, 225, 255, .55); }
+.boot-credit { position: absolute; left: 18px; bottom: 18px; color: rgba(255, 255, 255, .7); font-size: 11px; text-decoration: none; }
+.boot-credit:hover { color: #fff; text-decoration: underline; }
+@media (max-width: 720px) { .boot-credit { left: 12px; right: 12px; bottom: 44px; text-align: center; } }
+
+/* eMac: Der Bildschirm steht schräg, boot.js legt die Fläche per matrix3d auf seine vier Ecken */
+.crt { width: min(560px, 84vw, 62vh); filter: drop-shadow(0 26px 36px rgba(2, 50, 100, .45)); }
+.crt-screen {
+  left: 0; top: 0; width: 60%; height: 60%; transform-origin: 0 0;
+  padding: 5% 6%; border-radius: 3% / 3.5%;
+  background: radial-gradient(120% 100% at 45% 40%, #111820, #05070a);
+}
+.boot-log { font-size: clamp(9px, 1.5vw, 13px); }
+
+/* iMac G3 in Dreiviertelansicht: breiteres Bild, schmaler Bildschirm */
+.crt { width: min(680px, 90vw, 78vh); }
+.crt-screen { width: 30%; height: 56%; padding: 5% 6%; border-radius: 4% / 3%; }
+.boot-log { font-size: clamp(7px, 1.05vw, 10px); line-height: 1.5; }
+
+/* Einstieg mit dem iMac G3 Snow: frontal auf Tommys Blauverlauf, weicher Schatten und Lichtkegel */
+.boot {
+  background:
+    radial-gradient(60% 50% at 50% 50%, rgba(255, 255, 255, .22) 0%, transparent 70%),
+    linear-gradient(160deg, #7dd3fc 0%, #38bdf8 25%, #0ea5e9 55%, #0284c7 80%, #0369a1 100%);
+}
+.crt {
+  width: min(520px, 82vw, 62vh);
+  filter: drop-shadow(0 24px 48px rgba(2, 100, 163, .45));
+}
+.crt img { -webkit-mask-image: none; mask-image: none; }
+.crt-screen {
+  width: 70%; height: 52%; padding: 6% 7%; border-radius: 2.4% / 3%;
+  background: radial-gradient(120% 100% at 50% 38%, #142233, #050a12);
+  box-shadow: inset 0 0 40px rgba(0, 0, 0, .9);
+}
+.crt-shine {
+  position: absolute; left: 11%; top: 13%; width: 78%; height: 58%; pointer-events: none;
+  border-radius: 2%; background: linear-gradient(155deg, rgba(255, 255, 255, .16) 0%, rgba(255, 255, 255, 0) 38%);
+}
+.crt:hover .crt-screen { box-shadow: inset 0 0 40px rgba(0, 0, 0, .9), 0 0 26px rgba(160, 225, 255, .5); }
+.boot-log { font-size: clamp(9px, 1.4vw, 13px); }
+.boot-hint { color: rgba(255, 255, 255, .78); text-shadow: 0 1px 3px rgba(0, 0, 0, .25); }
+.boot-skip { color: rgba(255, 255, 255, .8); }
+.boot-skip:hover { color: #fff; }
+.boot-credit { color: rgba(255, 255, 255, .72); }
+.boot-credit:hover { color: #fff; }
+
+.win-body .credit { margin-top: 18px !important; padding-top: 12px; border-top: 1px solid var(--rule); font-size: 11px; color: #666; }
+.win-body .credit a { color: #2563eb; }
