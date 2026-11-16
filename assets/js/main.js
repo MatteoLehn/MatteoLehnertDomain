@@ -15,35 +15,48 @@ const SHOTS = [
 initClock();
 initCopyMail();
 
+// Bilder zeigen eine Ladefläche, bis sie da sind
+const markLoaded = (img) => {
+  const done = () => img.classList.add('is-loaded');
+  if (img.complete && img.naturalWidth) done();
+  else img.addEventListener('load', done, { once: true });
+};
+document.querySelectorAll('.thumb img, .shot img').forEach(markLoaded);
+
 const scenes = new Map();
 let portraitStarted = false;
 let terminal = null;
 
 const desktop = new Desktop({
-  onOpen(id, el) {
-    const canvas = el.querySelector('canvas.scene');
+  onShow(id, view) {
+    const canvas = view.querySelector('canvas.scene');
     if (canvas) {
       if (!scenes.has(id)) scenes.set(id, createScene(canvas));
       // einen Frame warten, damit das Canvas seine Grösse hat
       requestAnimationFrame(() => { const s = scenes.get(id); s.size(); s.setActive(true); });
     }
     if (id === 'about' && !portraitStarted) { portraitStarted = true; initPortrait(); }
+    // Video läuft nur, solange das Fenster offen ist, und ohne Ton
+    const video = view.querySelector('video');
+    if (video && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) video.play().catch(() => {});
     if (id === 'terminal' && terminal && window.matchMedia('(pointer: fine)').matches) terminal.focus();
-    history.replaceState(null, '', `#${id}`);
   },
-  onClose(id) {
+  onHide(id, view) {
     scenes.get(id)?.setActive(false);
+    document.querySelector(`[data-view="${id}"] video`)?.pause();
   },
 });
 terminal = initTerminal(desktop);
 
 // Screenshots im litho.ch-Fenster durchblättern
 let shot = 0;
+const shotImg = document.getElementById('shot');
 const showShot = (i) => {
   shot = (i + SHOTS.length) % SHOTS.length;
-  const img = document.getElementById('shot');
-  img.src = SHOTS[shot].src;
-  img.alt = SHOTS[shot].alt;
+  shotImg.classList.remove('is-loaded');
+  shotImg.src = SHOTS[shot].src;
+  shotImg.alt = SHOTS[shot].alt;
+  markLoaded(shotImg);
   document.getElementById('shot-url').textContent = SHOTS[shot].url;
 };
 document.getElementById('shot-prev').addEventListener('click', () => showShot(shot - 1));
@@ -51,7 +64,7 @@ document.getElementById('shot-next').addEventListener('click', () => showShot(sh
 
 document.querySelector('[data-action="reboot"]').addEventListener('click', () => {
   try { sessionStorage.removeItem('ml-booted'); } catch (e) { /* egal */ }
-  location.hash = '';
+  history.replaceState(null, '', location.pathname);
   location.reload();
 });
 
@@ -63,6 +76,7 @@ fonts.then(() => {
 
 runBoot().then(() => {
   const wanted = location.hash.slice(1);
-  const id = desktop.wins.has(wanted) ? wanted : 'about';
-  setTimeout(() => desktop.open(id), 250);
+  const id = desktop.views.has(wanted) ? wanted : 'about';
+  const from = document.querySelector(`.icon[data-open="${id}"]`);
+  setTimeout(() => desktop.open(id, from), 250);
 });

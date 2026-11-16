@@ -2,13 +2,18 @@
 
 const FILES = {
   'ueber-mich.txt': 'about',
-  'werdegang.log': 'werdegang',
-  'projekte/': 'firewall',
-  'projekte/firewall-umzug': 'firewall',
-  'projekte/litho.ch': 'litho',
-  'projekte/smart-fridge': 'fridge',
+  'werdegang.txt': 'werdegang',
   'kontakt': 'kontakt',
-  'ueber-diese-seite.txt': 'seite',
+  'projekte/': 'projekte',
+  'projekte/nrlyze': 'nrlyze',
+  'projekte/litho.ch': 'litho',
+  'projekte/matteolehnert.com': 'portfolio',
+  'schule/': 'schule',
+  'schule/vertiefungsarbeit': 'va',
+  'schule/probe-va': 'probe-va',
+  'schule/smart-fridge': 'fridge',
+  'schule/module.txt': 'module',
+  'hobbys': 'hobbys',
 };
 
 const HELP = [
@@ -16,6 +21,7 @@ const HELP = [
   ['whoami', 'wer hier schreibt'],
   ['ls', 'Dateien anzeigen'],
   ['open <name>', 'Fenster öffnen, z. B. open projekte/litho.ch'],
+  ['ls schule', 'Inhalt eines Ordners'],
   ['skills', 'Werkzeuge, mit denen ich arbeite'],
   ['ping <host>', 'gespielter Ping'],
   ['traceroute', 'mein Weg bis hierher'],
@@ -36,7 +42,8 @@ export function initTerminal(desktop) {
 
   const print = (html) => {
     out.insertAdjacentHTML('beforeend', `${html}\n`);
-    body.scrollTop = body.scrollHeight;
+    const sc = body.closest('.win-body');
+    if (sc) sc.scrollTop = sc.scrollHeight;
   };
 
   const run = (raw) => {
@@ -52,11 +59,14 @@ export function initTerminal(desktop) {
       case 'whoami':
         print('Matteo Lehnert, Informatiker EFZ Plattformentwicklung in Ausbildung.\nSunrise, Zürich. Lehrabschluss im Sommer 2027.');
         break;
-      case 'ls':
-        Object.keys(FILES).filter((f) => !f.includes('/') || f.endsWith('/') ).forEach((f) => print(`  ${f}`));
-        print('<span class="dim">  ls projekte zeigt die drei Projekte</span>');
-        if (arg.startsWith('projekte')) Object.keys(FILES).filter((f) => f.startsWith('projekte/') && f.length > 9).forEach((f) => print(`  ${f}`));
+      case 'ls': {
+        const dir = arg.replace(/\/$/, '');
+        const keys = Object.keys(FILES);
+        const list = dir ? keys.filter((f) => f.startsWith(`${dir}/`) && f.length > dir.length + 1) : keys.filter((f) => !f.includes('/') || f.endsWith('/'));
+        if (!list.length) print(`ls: ${esc(arg)} gibt es hier nicht.`);
+        list.forEach((f) => print(`  ${f}`));
         break;
+      }
       case 'open':
       case 'cat':
       case 'cd': {
