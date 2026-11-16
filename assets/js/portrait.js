@@ -3,7 +3,7 @@
 // Glyphen-Atlas nehmen. Dunkle Stellen bekommen dichte Zeichen, die helle Wand bleibt leer.
 // Unter der Maus liegt eine Lupe, die das echte Foto leicht gewölbt zeigt.
 
-import { cssVar, toRgb, reducedMotion, imageReady } from './util.js';
+import { cssVar, toRgb, reducedMotion, imageReady } from './util.js?v=4';
 
 const RAMP = ' .:-=+*%#@';
 

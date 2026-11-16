@@ -4,7 +4,7 @@
 // Vorschau und kommen mit einem Klick darauf zurück.
 // Ein Inhalt ist immer nur in einem Fenster offen; ein zweiter Klick holt dieses nach vorne.
 
-import { reducedMotion } from './util.js';
+import { reducedMotion } from './util.js?v=4';
 
 const EASE = 'cubic-bezier(.16,1,.3,1)';
 const ICON = {

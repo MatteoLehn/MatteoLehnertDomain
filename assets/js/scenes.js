@@ -2,7 +2,7 @@
 // dünne Linien, Knoten als Quadrate, Pakete mit Leuchtspur. Gezeichnet in einer
 // 400 x 300 Box, die in die Bühne eingepasst wird.
 
-import { fitCanvas, cssVar, toRgb, rgba, reducedMotion, visibleLoop, easeOut, clamp } from './util.js';
+import { fitCanvas, cssVar, toRgb, rgba, reducedMotion, visibleLoop, easeOut, clamp } from './util.js?v=4';
 
 const BOX_W = 400;
 const BOX_H = 300;

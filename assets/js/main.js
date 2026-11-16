@@ -1,10 +1,10 @@
-import { Field } from './field.js';
-import { Desktop } from './os.js';
-import { runBoot } from './boot.js';
-import { initTerminal } from './terminal.js';
-import { initPortrait } from './portrait.js';
-import { createScene } from './scenes.js';
-import { initClock, initCopyMail } from './ui.js';
+import { Field } from './field.js?v=4';
+import { Desktop } from './os.js?v=4';
+import { runBoot } from './boot.js?v=4';
+import { initTerminal } from './terminal.js?v=4';
+import { initPortrait } from './portrait.js?v=4';
+import { createScene } from './scenes.js?v=4';
+import { initClock, initCopyMail } from './ui.js?v=4';
 
 const SHOTS = [
   { src: 'assets/img/litho-1.webp', url: 'https://www.litho.ch/', alt: 'litho.ch, Startseite' },

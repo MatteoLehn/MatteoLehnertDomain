@@ -1,6 +1,6 @@
 // Uhr, Glyphen-Scramble, Einblenden beim Scrollen, aktive Sektion im Dock, Mail kopieren.
 
-import { reducedMotion } from './util.js';
+import { reducedMotion } from './util.js?v=4';
 
 const POOL = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789#%&*+=<>/';
 

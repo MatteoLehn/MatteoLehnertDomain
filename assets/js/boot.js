@@ -2,7 +2,7 @@
 // Der Zoom rechnet wie bei Tommy Biglow: Massstab so, dass der Bildschirm den Viewport füllt,
 // Ursprung in der Bildschirmmitte.
 
-import { reducedMotion, sleep } from './util.js';
+import { reducedMotion, sleep } from './util.js?v=4';
 
 const LINES = [
   'MatteOS 3.0',

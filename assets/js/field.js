@@ -2,7 +2,7 @@
 // sie lange Leitungen. Pakete laufen auf den Bögen von Kachel zu Kachel. Die Maus dreht
 // Kacheln um 90 Grad und legt damit Routen um, ein Klick schickt einen Ping los.
 
-import { rng, fitCanvas, cssVar, toRgb, rgba, reducedMotion, finePointer, visibleLoop, easeOut, lerp } from './util.js';
+import { rng, fitCanvas, cssVar, toRgb, rgba, reducedMotion, finePointer, visibleLoop, easeOut, lerp } from './util.js?v=4';
 
 const QUARTER = Math.PI / 2;
 const MID = [[0.5, 0], [1, 0.5], [0.5, 1], [0, 0.5]]; // Kantenmitten: oben, rechts, unten, links
